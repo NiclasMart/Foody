@@ -17,9 +17,4 @@ public class MenuHandler : MonoBehaviour
   {
     animator.SetBool("addCardActive", on);
   }
-
-  public void Select(string sceneName)
-  {
-    SceneManager.LoadScene(sceneName);
-  }
 }
