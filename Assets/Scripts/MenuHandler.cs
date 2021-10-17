@@ -7,9 +7,10 @@ public class MenuHandler : MonoBehaviour
 {
   Animator animator;
 
-  private void Awake()
+  private void Start()
   {
     animator = GetComponent<Animator>();
+    SavingSystem.Load("FoodList");
   }
 
   public void ToggleAddCard(bool on)

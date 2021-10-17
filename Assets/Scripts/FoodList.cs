@@ -9,7 +9,6 @@ public class FoodList : MonoBehaviour
 
   private void Awake()
   {
-
     if (instance != null)
     {
       Destroy(this);
@@ -27,5 +26,10 @@ public class FoodList : MonoBehaviour
   public List<Recipe> GetRecipes()
   {
     return recipes;
+  }
+
+  public void SetRecipes(List<Recipe> list)
+  {
+    recipes = list;
   }
 }

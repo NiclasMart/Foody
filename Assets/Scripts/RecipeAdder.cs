@@ -6,7 +6,6 @@ using TMPro;
 public class RecipeAdder : MonoBehaviour
 {
   [SerializeField] TMP_InputField nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
-  //[SerializeField] TMP_InputField ImageIn;
 
   public void AddNewRecipe()
   {
@@ -20,6 +19,7 @@ public class RecipeAdder : MonoBehaviour
     ClearInputFields();
 
     FoodList.instance.AddRecipe(newRecipe);
+    SavingSystem.Save("FoodList");
   }
 
   void ClearInputFields()

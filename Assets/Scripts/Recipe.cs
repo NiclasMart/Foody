@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Recipe
 {
   public string name;
-  public Image picture;
+  //public Image picture;
   public string link;
   public string description;
   public string ingredience;
