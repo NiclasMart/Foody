@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class Recipe
+public class Recipe : IComparable<Recipe>
 {
   public string name;
   //public Image picture;
@@ -13,6 +14,8 @@ public class Recipe
   public string ingredience;
   public List<SearchTags> tags = new List<SearchTags>();
 
-
-
+  public int CompareTo(Recipe other)
+  {
+    return this.name.CompareTo(other.name);
+  }
 }

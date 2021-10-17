@@ -6,9 +6,17 @@ using TMPro;
 public class RecipeSlot : MonoBehaviour
 {
   Recipe recipe;
+
   public void Initialize(Recipe recipe)
   {
     this.recipe = recipe;
     GetComponentInChildren<TextMeshProUGUI>().text = recipe.name;
+  }
+
+  public void ShowRecipe()
+  {
+    RecipeDisplay display = FindObjectOfType<RecipeDisplay>();
+    display.ToggleRecipeDisplay(true);
+    display.Display(recipe);
   }
 }

@@ -10,10 +10,10 @@ public class RecipeAdder : MonoBehaviour
   public void AddNewRecipe()
   {
     Recipe newRecipe = new Recipe();
-    newRecipe.name = nameIn.text;
-    newRecipe.link = linkIn.text;
-    newRecipe.ingredience = ingredienceIn.text;
-    newRecipe.description = descriptionIn.text;
+    newRecipe.name = nameIn.text != null ? nameIn.text : "";
+    newRecipe.link = linkIn.text != null ? linkIn.text : "";
+    newRecipe.ingredience = ingredienceIn.text != null ? ingredienceIn.text : "";
+    newRecipe.description = descriptionIn.text != null ? descriptionIn.text : "";
 
     Debug.Log(newRecipe.name);
     ClearInputFields();

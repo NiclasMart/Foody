@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 603.8954, y: 0.7534}
+  m_AnchoredPosition: {x: 603.8954, y: 0.75341797}
   m_SizeDelta: {x: 1202.6415, y: 106.6768}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5194830330768205639
@@ -121,7 +121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4604757502756806099}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7640707535604669163}
+        m_TargetAssemblyTypeName: RecipeSlot, Assembly-CSharp
+        m_MethodName: ShowRecipe
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7640707535604669163
 MonoBehaviour:
   m_ObjectHideFlags: 0
