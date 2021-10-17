@@ -6,10 +6,13 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Recipe
 {
-    string name;
-    Image picture;
-    string link;
-    string description;
-    List<SearchTags> tags = new List<SearchTags>();
+  public string name;
+  public Image picture;
+  public string link;
+  public string description;
+  public string ingredience;
+  public List<SearchTags> tags = new List<SearchTags>();
+
+
 
 }

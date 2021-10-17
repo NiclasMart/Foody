@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class FoodList : MonoBehaviour
 {
-    List<Recipe> recipes = new List<Recipe>();
-    public FoodList instance = null;
+  List<Recipe> recipes = new List<Recipe>();
+  public static FoodList instance = null;
 
-    private void Awake() 
+  private void Awake()
+  {
+
+    if (instance != null)
     {
-    
-      if (instance != null)
-      {
-        Destroy(this);
-        return;
-      }
-      instance = this;
-      DontDestroyOnLoad(this);
+      Destroy(this);
+      return;
     }
+    instance = this;
+    DontDestroyOnLoad(this);
+  }
+
+  public void AddRecipe(Recipe newRecipe)
+  {
+    recipes.Add(newRecipe);
+  }
 }

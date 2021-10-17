@@ -1501,7 +1501,7 @@ RectTransform:
   m_Children:
   - {fileID: 2062645050}
   m_Father: {fileID: 545944500}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1956,8 +1956,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1072679592}
   - {fileID: 492106139}
+  - {fileID: 1072679592}
   - {fileID: 1506307501}
   - {fileID: 1726929144}
   - {fileID: 2087328749}
@@ -2271,6 +2271,7 @@ GameObject:
   - component: {fileID: 809397330}
   - component: {fileID: 809397329}
   - component: {fileID: 809397331}
+  - component: {fileID: 809397332}
   m_Layer: 5
   m_Name: AddCard
   m_TagString: Untagged
@@ -2368,6 +2369,23 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &809397332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809397327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc242e3742b705143803c3ffdeef1c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameIn: {fileID: 492106140}
+  linkIn: {fileID: 1506307502}
+  tagsIn: {fileID: 1726929145}
+  ingredienceIn: {fileID: 2087328750}
+  descriptionIn: {fileID: 1732628048}
 --- !u!1 &810970973
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,7 +2654,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1012494003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 809397332}
+        m_TargetAssemblyTypeName: RecipeAdder, Assembly-CSharp
+        m_MethodName: AddNewRecipe
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1012494003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2995,7 +3025,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 545944500}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -3712,7 +3742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618983186eb49de4eb4c7b848e0092ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
 --- !u!4 &1390311492
 Transform:
   m_ObjectHideFlags: 0
@@ -5174,7 +5203,7 @@ GameObject:
   - component: {fileID: 2087328751}
   - component: {fileID: 2087328750}
   m_Layer: 5
-  m_Name: Ingredients
+  m_Name: Ingredience
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
