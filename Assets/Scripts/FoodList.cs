@@ -24,6 +24,12 @@ public class FoodList : MonoBehaviour
     recipes.Sort();
   }
 
+  public void DeleteRecipe(Recipe recipe)
+  {
+    if (recipe == null) return; 
+    recipes.Remove(recipe);
+  }
+
   public List<Recipe> GetRecipes()
   {
     return recipes;
