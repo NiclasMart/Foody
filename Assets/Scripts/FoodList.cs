@@ -23,4 +23,9 @@ public class FoodList : MonoBehaviour
   {
     recipes.Add(newRecipe);
   }
+
+  public List<Recipe> GetRecipes()
+  {
+    return recipes;
+  }
 }
