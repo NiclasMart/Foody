@@ -7,7 +7,7 @@ using UnityEngine;
 public class RecipeDisplay : MonoBehaviour
 {
   [SerializeField] TextMeshProUGUI nameField;
-  [SerializeField] InputFunctionality linkIn, tagsIn, ingredienceIn, descriptionIn;
+  [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
   FoodListHandler listHandler;
   Recipe displayedRecipe;
 
@@ -44,19 +44,29 @@ public class RecipeDisplay : MonoBehaviour
     ToggleRecipeDisplay(false);
   }
 
+  public void EnableEditingMode()
+  {
+    GetComponent<Animator>().SetBool("EditActive", true);
+    nameIn.SetValue(displayedRecipe.name);
+    ToggleEditingMode(true);
+  }
+
   public void ResetEditingMode()
   {
     ToggleEditingMode(false);
     Display(displayedRecipe);
+    GetComponent<Animator>().SetBool("EditActive", false);
   }
 
   public void SaveEditingChanges()
   {
+    displayedRecipe.name = nameIn.GetValue();
     displayedRecipe.link = linkIn.GetValue();
     displayedRecipe.tags = RecipeAdder.StringToList(tagsIn.GetValue());
     displayedRecipe.description = descriptionIn.GetValue();
     displayedRecipe.ingredience = ingredienceIn.GetValue();
 
+    listHandler.RefreshList();
     SavingSystem.Save("FoodList");
 
     ResetEditingMode();
@@ -75,7 +85,5 @@ public class RecipeDisplay : MonoBehaviour
     tagsIn.ToggleInteractionState(on);
     ingredienceIn.ToggleInteractionState(on);
     descriptionIn.ToggleInteractionState(on);
-
-    GetComponent<Animator>().SetBool("EditActive", on);
   }
 }

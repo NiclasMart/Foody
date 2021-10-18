@@ -20,6 +20,7 @@ public class InputFunctionality : MonoBehaviour
 
   public void SetValue(string value)
   {
+    if (fieldIn == null) fieldIn = GetComponent<TMP_InputField>();
     fieldIn.text = value;
   }
 
