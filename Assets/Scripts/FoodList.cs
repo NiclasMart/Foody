@@ -5,6 +5,7 @@ using UnityEngine;
 public class FoodList : MonoBehaviour
 {
   List<Recipe> recipes = new List<Recipe>();
+  List<string> tags = new List<string>();
   public static FoodList instance = null;
 
   private void Awake()
@@ -28,6 +29,11 @@ public class FoodList : MonoBehaviour
   {
     if (recipe == null) return; 
     recipes.Remove(recipe);
+  }
+
+  public void AddTags(List<string> newTags)
+  {
+    
   }
 
   public List<Recipe> GetRecipes()

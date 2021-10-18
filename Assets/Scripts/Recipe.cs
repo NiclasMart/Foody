@@ -12,7 +12,7 @@ public class Recipe : IComparable<Recipe>
   public string link;
   public string description;
   public string ingredience;
-  public List<SearchTags> tags = new List<SearchTags>();
+  public List<string> tags = new List<string>();
 
   public int CompareTo(Recipe other)
   {
