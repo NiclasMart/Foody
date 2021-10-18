@@ -5,33 +5,35 @@ using UnityEngine;
 public class FoodListHandler : MonoBehaviour
 {
   [SerializeField] RecipeSlot recipeSlot;
-  [SerializeField] Transform list;
+  [SerializeField] Transform listTransform;
 
   private void Start()
   {
-    ShowList();
+    ShowCompleteList();
   }
 
-  public void RefreshList()
+  public void ShowList(List<Recipe> list)
   {
     DeleteList();
-    ShowList();
-  }
 
-  private void ShowList()
-  {
-    foreach (var recipe in FoodList.instance.GetRecipes())
+    foreach (var recipe in list)
     {
-      RecipeSlot slot = Instantiate(recipeSlot, list);
+      RecipeSlot slot = Instantiate(recipeSlot, listTransform);
       slot.Initialize(recipe);
     }
   }
 
+  public void ShowCompleteList()
+  {
+    ShowList(FoodList.instance.GetRecipes());
+  }
+
+
   private void DeleteList()
   {
-    foreach (Transform item in list.transform)
+    foreach (Transform item in listTransform.transform)
     {
-      if (item == list) continue;
+      if (item == listTransform) continue;
       Destroy(item.gameObject);
     }
   }

@@ -40,7 +40,7 @@ public class RecipeDisplay : MonoBehaviour
   {
     FoodList.instance.DeleteRecipe(displayedRecipe);
     SavingSystem.Save("FoodList");
-    listHandler.RefreshList();
+    listHandler.ShowCompleteList();
     ToggleRecipeDisplay(false);
   }
 
@@ -66,7 +66,7 @@ public class RecipeDisplay : MonoBehaviour
     displayedRecipe.description = descriptionIn.GetValue();
     displayedRecipe.ingredience = ingredienceIn.GetValue();
 
-    listHandler.RefreshList();
+    listHandler.ShowCompleteList();
     SavingSystem.Save("FoodList");
 
     ResetEditingMode();
