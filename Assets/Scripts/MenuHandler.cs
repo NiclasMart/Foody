@@ -13,6 +13,12 @@ public class MenuHandler : MonoBehaviour
     SavingSystem.Load("FoodList");
   }
 
+  void Update()
+  {
+    if (Input.GetKeyDown(KeyCode.Escape))
+      Application.Quit();
+  }
+
   public void ToggleAddCard(bool on)
   {
     animator.SetBool("addCardActive", on);
