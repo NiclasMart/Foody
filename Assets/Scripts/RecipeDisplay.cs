@@ -34,8 +34,9 @@ public class RecipeDisplay : MonoBehaviour
     string tagString = "";
     foreach (var tag in tags)
     {
-      tagString += tag + " ";
+      tagString += (tag + ", ");
     }
+    tagString = tagString.Remove(tagString.Length - 2, 2);
     return tagString;
   }
 
