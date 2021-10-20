@@ -20,7 +20,7 @@ public class RecipeDisplay : MonoBehaviour
   public void Display(Recipe recipe)
   {
     nameField.text = recipe.name;
-    linkField.text = recipe.link;
+    linkField.text = BuildHyperlink(recipe.link);
     tagsField.text = TagsToString(recipe.tags);
     ingredienceField.text = recipe.ingredients;
     descriptionField.text = recipe.description;
@@ -63,6 +63,11 @@ public class RecipeDisplay : MonoBehaviour
     tagsIn.SetValue(TagsToString(displayedRecipe.tags));
     ingredienceIn.SetValue(displayedRecipe.ingredients);
     descriptionIn.SetValue(displayedRecipe.description);
+  }
+
+  string BuildHyperlink(string link)
+  {
+    return "<link=" + link + "><color=blue>Link zum Rezept</color></link>";
   }
 
   public void ResetEditingMode()

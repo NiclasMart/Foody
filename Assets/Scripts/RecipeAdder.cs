@@ -10,6 +10,8 @@ public class RecipeAdder : MonoBehaviour
 
   public void AddNewRecipe()
   {
+    if (nameIn.GetValue() == "" || nameIn.GetValue() == " ") return;
+    
     Recipe newRecipe = new Recipe();
     newRecipe.name = nameIn.GetValue();
     newRecipe.link = linkIn.GetValue();
