@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RecipeDisplay : MonoBehaviour
 {
-  [SerializeField] TextMeshProUGUI nameField;
+  [SerializeField] RectTransform showCard, editCard;
+  [SerializeField] TextMeshProUGUI nameField, linkField, tagsField, ingredienceField, descriptionField;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
   FoodListHandler listHandler;
   Recipe displayedRecipe;
@@ -18,10 +20,11 @@ public class RecipeDisplay : MonoBehaviour
   public void Display(Recipe recipe)
   {
     nameField.text = recipe.name;
-    linkIn.SetValue(recipe.link);
-    tagsIn.SetValue(TagsToString(recipe.tags));
-    ingredienceIn.SetValue(recipe.ingredience);
-    descriptionIn.SetValue(recipe.description);
+    linkField.text = recipe.link;
+    tagsField.text = TagsToString(recipe.tags);
+    ingredienceField.text = recipe.ingredience;
+    descriptionField.text = recipe.description;
+
 
     displayedRecipe = recipe;
   }
@@ -47,8 +50,18 @@ public class RecipeDisplay : MonoBehaviour
   public void EnableEditingMode()
   {
     GetComponent<Animator>().SetBool("EditActive", true);
-    nameIn.SetValue(displayedRecipe.name);
+    GetComponent<ScrollRect>().content = editCard;
     ToggleEditingMode(true);
+    FillContentInInputFields();
+  }
+
+  private void FillContentInInputFields()
+  {
+    nameIn.SetValue(displayedRecipe.name);
+    linkIn.SetValue(displayedRecipe.link);
+    tagsIn.SetValue(TagsToString(displayedRecipe.tags));
+    ingredienceIn.SetValue(displayedRecipe.ingredience);
+    descriptionIn.SetValue(displayedRecipe.description);
   }
 
   public void ResetEditingMode()
@@ -56,6 +69,7 @@ public class RecipeDisplay : MonoBehaviour
     ToggleEditingMode(false);
     Display(displayedRecipe);
     GetComponent<Animator>().SetBool("EditActive", false);
+    GetComponent<ScrollRect>().content = showCard;
   }
 
   public void SaveEditingChanges()
@@ -81,9 +95,7 @@ public class RecipeDisplay : MonoBehaviour
 
   public void ToggleEditingMode(bool on)
   {
-    linkIn.ToggleInteractionState(on);
-    tagsIn.ToggleInteractionState(on);
-    ingredienceIn.ToggleInteractionState(on);
-    descriptionIn.ToggleInteractionState(on);
+    editCard.gameObject.SetActive(on);
+    showCard.gameObject.SetActive(!on);
   }
 }
