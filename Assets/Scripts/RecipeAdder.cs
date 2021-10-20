@@ -14,7 +14,7 @@ public class RecipeAdder : MonoBehaviour
     newRecipe.name = nameIn.GetValue();
     newRecipe.link = linkIn.GetValue();
     newRecipe.tags = StringToList(tagsIn.GetValue());
-    newRecipe.ingredience = ingredienceIn.GetValue();
+    newRecipe.ingredients = ingredienceIn.GetValue();
     newRecipe.description = descriptionIn.GetValue();
 
     ClearInputFields();
@@ -25,8 +25,9 @@ public class RecipeAdder : MonoBehaviour
 
   public static List<string> StringToList(string stringValue)
   {
-    stringValue.ToLower();
-    stringValue.Replace(" ", "");
+    if (stringValue == "" || stringValue == " ") return new List<string>();
+    stringValue = stringValue.ToLower();
+    stringValue = stringValue.Replace(" ", "");
     return stringValue.Split(',').ToList();
   }
 

@@ -11,7 +11,7 @@ public class Recipe : IComparable<Recipe>
   //public Image picture;
   public string link;
   public string description;
-  public string ingredience;
+  public string ingredients;
   public List<string> tags = new List<string>();
 
   public int CompareTo(Recipe other)

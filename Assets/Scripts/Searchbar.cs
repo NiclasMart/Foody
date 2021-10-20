@@ -25,13 +25,85 @@ public class Searchbar : MonoBehaviour
 
     string searchString = input.text;
     List<Recipe> showList = new List<Recipe>();
+    if (searchString.Contains("#"))
+    {
+      string[] searchTerms = searchString.Split('#');
 
+      foreach (var term in searchTerms)
+      {
+        if (term == "") continue;
+        string lowCaseTerm = term.ToLower();
+        string[] words = lowCaseTerm.Split(' ');
+        if (words[0] == "tag") showList = SearchTag(words, showList);
+        else if (words[0] == "zutat") showList = SearchIngredience(words, showList);
+        else SearchName(searchString, showList);
+      }
+    }
+    else SearchName(searchString, showList);
+    
+    listHandler.ShowList(showList);
+  }
+
+  private List<Recipe> SearchIngredience(string[] ingredients, List<Recipe> showList)
+  {
+    Debug.Log("Zutat gefunden");
+    if (ingredients.Length == 1 || ingredients[1] == "") return showList;
+
+    //iterate over each recipe
+    List<Recipe> recipeSelection = showList.Count == 0 ? FoodList.instance.GetRecipes() : showList;
+    List<Recipe> newShowList = new List<Recipe>();
+    foreach (var recipe in recipeSelection)
+    {
+      if (recipe.ingredients == "") continue;
+      bool containsIngredients = true;
+      //iterate over each tag
+      for (int i = 1; i < ingredients.Length; i++)
+      {
+        if (ingredients[i] == "") continue;
+        if (!recipe.ingredients.Contains(ingredients[i]))
+        {
+          containsIngredients = false;
+          break;
+        }
+      }
+      if (containsIngredients) newShowList.Add(recipe);
+    }
+    return newShowList;
+  }
+
+  private void SearchName(string searchString, List<Recipe> showList)
+  {
     foreach (var recipe in FoodList.instance.GetRecipes())
     {
       if (recipe.name.Contains(searchString)) showList.Add(recipe);
     }
+  }
 
-    listHandler.ShowList(showList);
+  private List<Recipe> SearchTag(string[] tags, List<Recipe> showList)
+  {
+    Debug.Log("Tag gefunden");
+    if (tags.Length == 1 || tags[1] == "") return showList;
+
+    //iterate over each recipe
+    List<Recipe> recipeSelection = showList.Count == 0 ? FoodList.instance.GetRecipes() : showList;
+    List<Recipe> newShowList = new List<Recipe>();
+    foreach (var recipe in recipeSelection)
+    {
+      if (recipe.tags.Count == 0) continue;
+      bool tagsAreValid = true;
+      //iterate over each tag
+      for (int i = 1; i < tags.Length; i++)
+      {
+        if (tags[i] == "") continue;
+        if (!recipe.tags.Contains(tags[i]))
+        {
+          tagsAreValid = false;
+          break;
+        }
+      }
+      if (tagsAreValid) newShowList.Add(recipe);
+    }
+    return newShowList;
   }
 
   public void ResetSearch()

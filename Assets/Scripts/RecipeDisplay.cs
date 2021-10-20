@@ -22,7 +22,7 @@ public class RecipeDisplay : MonoBehaviour
     nameField.text = recipe.name;
     linkField.text = recipe.link;
     tagsField.text = TagsToString(recipe.tags);
-    ingredienceField.text = recipe.ingredience;
+    ingredienceField.text = recipe.ingredients;
     descriptionField.text = recipe.description;
 
 
@@ -36,7 +36,7 @@ public class RecipeDisplay : MonoBehaviour
     {
       tagString += (tag + ", ");
     }
-    tagString = tagString.Remove(tagString.Length - 2, 2);
+    if (tagString != "") tagString = tagString.Remove(tagString.Length - 2, 2);
     return tagString;
   }
 
@@ -61,7 +61,7 @@ public class RecipeDisplay : MonoBehaviour
     nameIn.SetValue(displayedRecipe.name);
     linkIn.SetValue(displayedRecipe.link);
     tagsIn.SetValue(TagsToString(displayedRecipe.tags));
-    ingredienceIn.SetValue(displayedRecipe.ingredience);
+    ingredienceIn.SetValue(displayedRecipe.ingredients);
     descriptionIn.SetValue(displayedRecipe.description);
   }
 
@@ -79,7 +79,7 @@ public class RecipeDisplay : MonoBehaviour
     displayedRecipe.link = linkIn.GetValue();
     displayedRecipe.tags = RecipeAdder.StringToList(tagsIn.GetValue());
     displayedRecipe.description = descriptionIn.GetValue();
-    displayedRecipe.ingredience = ingredienceIn.GetValue();
+    displayedRecipe.ingredients = ingredienceIn.GetValue();
 
     listHandler.ShowCompleteList();
     SavingSystem.Save("FoodList");
