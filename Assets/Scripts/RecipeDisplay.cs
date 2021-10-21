@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
@@ -26,6 +25,7 @@ public class RecipeDisplay : MonoBehaviour
     tagsField.text = TagsToString(recipe.tags);
     ingredienceField.text = recipe.ingredients;
     descriptionField.text = recipe.description;
+    dateField.text = "Zuletzt gekocht: " + recipe.date;
 
 
     displayedRecipe = recipe;
@@ -52,9 +52,7 @@ public class RecipeDisplay : MonoBehaviour
 
   public void UpdateCookingDate()
   {
-    string dateDisplay = "Zuletzt gekocht: ";
-    dateDisplay += DateTime.Now.Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"));
-    displayedRecipe.date = dateDisplay;
+    displayedRecipe.date = DateTime.Now.Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"));
     Display(displayedRecipe);
     SavingSystem.Save("FoodList");
   }

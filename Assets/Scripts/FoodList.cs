@@ -22,7 +22,6 @@ public class FoodList : MonoBehaviour
   public void AddRecipe(Recipe newRecipe)
   {
     recipes.Add(newRecipe);
-    recipes.Sort();
   }
 
   public void DeleteRecipe(Recipe recipe)
