@@ -13,6 +13,7 @@ public class Recipe : IComparable<Recipe>
   public string description;
   public string ingredients;
   public List<string> tags = new List<string>();
+  public string date = "---";
 
   public int CompareTo(Recipe other)
   {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ using UnityEngine.UI;
 public class RecipeDisplay : MonoBehaviour
 {
   [SerializeField] RectTransform showCard, editCard;
-  [SerializeField] TextMeshProUGUI nameField, linkField, tagsField, ingredienceField, descriptionField;
+  [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagsField, ingredienceField, descriptionField;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
   FoodListHandler listHandler;
   Recipe displayedRecipe;
@@ -21,6 +22,7 @@ public class RecipeDisplay : MonoBehaviour
   {
     nameField.text = recipe.name;
     linkField.text = BuildHyperlink(recipe.link);
+    dateField.text = recipe.date;
     tagsField.text = TagsToString(recipe.tags);
     ingredienceField.text = recipe.ingredients;
     descriptionField.text = recipe.description;
@@ -46,6 +48,15 @@ public class RecipeDisplay : MonoBehaviour
     SavingSystem.Save("FoodList");
     listHandler.ShowCompleteList();
     ToggleRecipeDisplay(false);
+  }
+
+  public void UpdateCookingDate()
+  {
+    string dateDisplay = "Zuletzt gekocht: ";
+    dateDisplay += DateTime.Now.Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"));
+    displayedRecipe.date = dateDisplay;
+    Display(displayedRecipe);
+    SavingSystem.Save("FoodList");
   }
 
   public void EnableEditingMode()
