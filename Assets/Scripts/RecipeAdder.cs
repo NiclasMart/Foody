@@ -20,8 +20,8 @@ public class RecipeAdder : MonoBehaviour
 
     ClearInputFields();
 
-    FoodList.instance.AddRecipe(newRecipe);
-    SavingSystem.Save("FoodList");
+    ListData.instance.AddRecipe(newRecipe);
+    ListData.instance.SaveRecipeList();
   }
 
   public static List<string> StringToList(string stringValue)

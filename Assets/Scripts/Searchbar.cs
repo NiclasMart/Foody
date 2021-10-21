@@ -5,13 +5,13 @@ using TMPro;
 
 public class Searchbar : MonoBehaviour
 {
-  FoodListHandler listHandler;
+  RecipeListHandler listHandler;
   TMP_InputField input;
 
 
   private void Awake()
   {
-    listHandler = FindObjectOfType<FoodListHandler>();
+    listHandler = FindObjectOfType<RecipeListHandler>();
     input = GetComponent<TMP_InputField>();
   }
 
@@ -40,7 +40,7 @@ public class Searchbar : MonoBehaviour
       }
     }
     else SearchName(searchString, showList);
-    
+
     listHandler.ShowList(showList);
   }
 
@@ -50,7 +50,7 @@ public class Searchbar : MonoBehaviour
     if (ingredients.Length == 1 || ingredients[1] == "") return showList;
 
     //iterate over each recipe
-    List<Recipe> recipeSelection = showList.Count == 0 ? FoodList.instance.GetRecipes() : showList;
+    List<Recipe> recipeSelection = showList.Count == 0 ? ListData.instance.recipes : showList;
     List<Recipe> newShowList = new List<Recipe>();
     foreach (var recipe in recipeSelection)
     {
@@ -73,7 +73,7 @@ public class Searchbar : MonoBehaviour
 
   private void SearchName(string searchString, List<Recipe> showList)
   {
-    foreach (var recipe in FoodList.instance.GetRecipes())
+    foreach (var recipe in ListData.instance.recipes)
     {
       if (recipe.name.Contains(searchString)) showList.Add(recipe);
     }
@@ -85,7 +85,7 @@ public class Searchbar : MonoBehaviour
     if (tags.Length == 1 || tags[1] == "") return showList;
 
     //iterate over each recipe
-    List<Recipe> recipeSelection = showList.Count == 0 ? FoodList.instance.GetRecipes() : showList;
+    List<Recipe> recipeSelection = showList.Count == 0 ? ListData.instance.recipes : showList;
     List<Recipe> newShowList = new List<Recipe>();
     foreach (var recipe in recipeSelection)
     {

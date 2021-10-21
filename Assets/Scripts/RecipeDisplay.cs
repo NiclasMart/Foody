@@ -10,12 +10,12 @@ public class RecipeDisplay : MonoBehaviour
   [SerializeField] RectTransform showCard, editCard;
   [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagsField, ingredienceField, descriptionField;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
-  FoodListHandler listHandler;
+  RecipeListHandler listHandler;
   Recipe displayedRecipe;
 
   private void Awake()
   {
-    listHandler = FindObjectOfType<FoodListHandler>();
+    listHandler = FindObjectOfType<RecipeListHandler>();
   }
   public void Display(Recipe recipe)
   {
@@ -31,21 +31,10 @@ public class RecipeDisplay : MonoBehaviour
     displayedRecipe = recipe;
   }
 
-  private string TagsToString(List<string> tags)
-  {
-    string tagString = "";
-    foreach (var tag in tags)
-    {
-      tagString += (tag + ", ");
-    }
-    if (tagString != "") tagString = tagString.Remove(tagString.Length - 2, 2);
-    return tagString;
-  }
-
   public void Delete()
   {
-    FoodList.instance.DeleteRecipe(displayedRecipe);
-    SavingSystem.Save("FoodList");
+    ListData.instance.DeleteRecipe(displayedRecipe);
+    ListData.instance.SaveRecipeList();
     listHandler.ShowCompleteList();
     ToggleRecipeDisplay(false);
   }
@@ -54,7 +43,7 @@ public class RecipeDisplay : MonoBehaviour
   {
     displayedRecipe.date = DateTime.Now.Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"));
     Display(displayedRecipe);
-    SavingSystem.Save("FoodList");
+    ListData.instance.SaveRecipeList();
   }
 
   public void EnableEditingMode()
@@ -63,20 +52,6 @@ public class RecipeDisplay : MonoBehaviour
     GetComponent<ScrollRect>().content = editCard;
     ToggleEditingMode(true);
     FillContentInInputFields();
-  }
-
-  private void FillContentInInputFields()
-  {
-    nameIn.SetValue(displayedRecipe.name);
-    linkIn.SetValue(displayedRecipe.link);
-    tagsIn.SetValue(TagsToString(displayedRecipe.tags));
-    ingredienceIn.SetValue(displayedRecipe.ingredients);
-    descriptionIn.SetValue(displayedRecipe.description);
-  }
-
-  string BuildHyperlink(string link)
-  {
-    return "<link=" + link + "><color=blue>Link zum Rezept</color></link>";
   }
 
   public void ResetEditingMode()
@@ -96,7 +71,7 @@ public class RecipeDisplay : MonoBehaviour
     displayedRecipe.ingredients = ingredienceIn.GetValue();
 
     listHandler.ShowCompleteList();
-    SavingSystem.Save("FoodList");
+    ListData.instance.SaveRecipeList();
 
     ResetEditingMode();
   }
@@ -113,4 +88,38 @@ public class RecipeDisplay : MonoBehaviour
     editCard.gameObject.SetActive(on);
     showCard.gameObject.SetActive(!on);
   }
+
+  public void AddRecipeToFoodList()
+  {
+    if (ListData.instance.foods.Contains(displayedRecipe)) return;
+    ListData.instance.foods.Add(displayedRecipe);
+    ListData.instance.SaveFoodList();
+  }
+
+  private void FillContentInInputFields()
+  {
+    nameIn.SetValue(displayedRecipe.name);
+    linkIn.SetValue(displayedRecipe.link);
+    tagsIn.SetValue(TagsToString(displayedRecipe.tags));
+    ingredienceIn.SetValue(displayedRecipe.ingredients);
+    descriptionIn.SetValue(displayedRecipe.description);
+  }
+
+  private string TagsToString(List<string> tags)
+  {
+    string tagString = "";
+    foreach (var tag in tags)
+    {
+      tagString += (tag + ", ");
+    }
+    if (tagString != "") tagString = tagString.Remove(tagString.Length - 2, 2);
+    return tagString;
+  }
+
+  private string BuildHyperlink(string link)
+  {
+    return "<link=" + link + "><color=blue>Link zum Rezept</color></link>";
+  }
+
+
 }

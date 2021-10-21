@@ -1,7 +1,55 @@
 fileFormatVersion: 2
 guid: ec63c8ea0aa397a4bb224bda0d61960a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1709732505105963231
+    second: cook icon - Google-Suche_0
+  - first:
+      213: -2416247115258679907
+    second: cook icon - Google-Suche_1
+  - first:
+      213: -5238457654446530006
+    second: cook icon - Google-Suche_2
+  - first:
+      213: -1873420575350357405
+    second: cook icon - Google-Suche_3
+  - first:
+      213: -3525051424859195066
+    second: cook icon - Google-Suche_4
+  - first:
+      213: -3775992145951985638
+    second: cook icon - Google-Suche_5
+  - first:
+      213: -1604674999426821796
+    second: cook icon - Google-Suche_6
+  - first:
+      213: -5613757217917203540
+    second: cook icon - Google-Suche_7
+  - first:
+      213: -5609238682618042054
+    second: cook icon - Google-Suche_8
+  - first:
+      213: -4652755905811987607
+    second: cook icon - Google-Suche_9
+  - first:
+      213: -1302235307832310749
+    second: cook icon - Google-Suche_10
+  - first:
+      213: -3450420721857159039
+    second: cook icon - Google-Suche_11
+  - first:
+      213: 8031061109175145921
+    second: cook icon - Google-Suche_12
+  - first:
+      213: -4604106327328754323
+    second: cook icon - Google-Suche_13
+  - first:
+      213: 649545929088331567
+    second: cook icon - Google-Suche_14
+  - first:
+      213: 3194581197311490385
+    second: cook icon - Google-Suche_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +89,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +123,381 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 450
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 127683c585fc548e0800000000000000
+      internalID: -1709732505105963231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 450
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9da17dec04c77ed0800000000000000
+      internalID: -2416247115258679907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_2
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 450
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 22, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a22e9cf84824d47b0800000000000000
+      internalID: -5238457654446530006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_3
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 450
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 362855b99e54006e0800000000000000
+      internalID: -1873420575350357405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6497846d760841fc0800000000000000
+      internalID: -3525051424859195066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_5
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 300
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a10fdd9362bf89bc0800000000000000
+      internalID: -3775992145951985638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_6
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 300
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c51d637079c0bb9e0800000000000000
+      internalID: -1604674999426821796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_7
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 300
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cab82c2ad8de712b0800000000000000
+      internalID: -5613757217917203540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_8
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 173
+        width: 116
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a39eb2e132bf722b0800000000000000
+      internalID: -5609238682618042054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_9
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 150
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 963c97fa7271e6fb0800000000000000
+      internalID: -4652755905811987607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_10
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 150
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3240fa613e78dede0800000000000000
+      internalID: -1302235307832310749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_11
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 150
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 180ae0472a4ad10d0800000000000000
+      internalID: -3450420721857159039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c5d6d5478f047f60800000000000000
+      internalID: 8031061109175145921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_13
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 0
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d65f07b50bdea10c0800000000000000
+      internalID: -4604106327328754323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_14
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 0
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2f6c90c496a30900800000000000000
+      internalID: 649545929088331567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cook icon - Google-Suche_15
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 0
+        width: 149.5
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 159b4ef5cae655c20800000000000000
+      internalID: 3194581197311490385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

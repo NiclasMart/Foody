@@ -10,7 +10,8 @@ public class MenuHandler : MonoBehaviour
   private void Start()
   {
     animator = GetComponent<Animator>();
-    SavingSystem.Load("FoodList");
+    ListData.instance.LoadRecipeList();
+    ListData.instance.LoadFoodList();
   }
 
   void Update()
