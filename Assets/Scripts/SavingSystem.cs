@@ -16,6 +16,12 @@ public static class SavingSystem
     return LoadFile(saveFile);
   }
 
+  public static void DeletePicture(string name)
+  {
+    string path = Path.Combine(Application.persistentDataPath, name);
+    File.Delete(path);
+  }
+
   public static string GetPathFromSaveFile(string saveFile)
   {
     return Path.Combine(Application.persistentDataPath, saveFile + ".eat");

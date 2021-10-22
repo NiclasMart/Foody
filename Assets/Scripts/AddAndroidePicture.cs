@@ -61,14 +61,14 @@ public class AddAndroidePicture : MonoBehaviour
     byte[] bytes = photo.EncodeToPNG();
     //Write out the PNG. Of course you have to substitute your_path for something sensible
     string photoName = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".png";
-    File.WriteAllBytes(Application.persistentDataPath + photoName, bytes);
+    string path = Path.Combine(Application.persistentDataPath, photoName);
+    File.WriteAllBytes(path, bytes);
 
-    Texture2D tex = new Texture2D(2, 2);           // Create new "empty" texture
+    Texture2D tex = new Texture2D(2, 2);
     tex.LoadImage(bytes);
 
     Sprite newSprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0), 100f);
     GetComponent<Image>().sprite = newSprite;
-
 
     onTakePicture.Invoke(photoName);
 

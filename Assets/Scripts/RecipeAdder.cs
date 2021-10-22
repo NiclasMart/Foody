@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class RecipeAdder : MonoBehaviour
 {
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
+  [SerializeField] Image picture;
   string tmpPictureName = "";
 
   private void Awake()
@@ -39,7 +41,14 @@ public class RecipeAdder : MonoBehaviour
 
   public void AddPicture(string name)
   {
+    if (tmpPictureName != "") SavingSystem.DeletePicture(tmpPictureName);
     tmpPictureName = name;
+  }
+
+  public void ClearUnusedData()
+  {
+    if (tmpPictureName != "") SavingSystem.DeletePicture(tmpPictureName);
+    ClearInputFields();
   }
 
   void ClearInputFields()
@@ -50,6 +59,7 @@ public class RecipeAdder : MonoBehaviour
     ingredienceIn.ClearField();
     descriptionIn.ClearField();
     tmpPictureName = "";
+    picture.sprite = null;
   }
 
 }
