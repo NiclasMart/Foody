@@ -19,4 +19,9 @@ public class RecipeSlot : MonoBehaviour
     display.ToggleRecipeDisplay(true);
     display.Display(recipe);
   }
+
+  public void DeleteSlot()
+  {
+    FindObjectOfType<FoodListHandler>()?.DeleteFoodFromList(recipe);
+  }
 }
