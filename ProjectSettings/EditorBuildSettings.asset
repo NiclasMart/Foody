@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RecipeList.unity
     guid: 6f7c1cb231e9a72499e28abd144e5f16
+  - enabled: 1
+    path: Assets/Scenes/FoodList.unity
+    guid: 94352f29828d0154d8df0e96bcfe756c
   m_configObjects: {}

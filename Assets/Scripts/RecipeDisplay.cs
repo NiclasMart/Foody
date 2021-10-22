@@ -10,12 +10,12 @@ public class RecipeDisplay : MonoBehaviour
   [SerializeField] RectTransform showCard, editCard;
   [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagsField, ingredienceField, descriptionField;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
-  RecipeListHandler listHandler;
+  ListHandler listHandler;
   Recipe displayedRecipe;
 
   private void Awake()
   {
-    listHandler = FindObjectOfType<RecipeListHandler>();
+    listHandler = FindObjectOfType<ListHandler>();
   }
   public void Display(Recipe recipe)
   {

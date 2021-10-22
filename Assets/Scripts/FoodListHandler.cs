@@ -8,13 +8,20 @@ public class FoodListHandler : ListHandler
   [SerializeField] InputFunctionality foodIn;
   List<Recipe> displayedList;
 
+  private void Awake()
+  {
+    foodIn.GetComponent<TMP_InputField>().onSubmit.AddListener(AddNewFood);
+  }
+
   public override void ShowCompleteList()
   {
     ShowList(ListData.instance.foods);
   }
 
-  public void AddNewFood()
+  public void AddNewFood(string msg)
   {
+    if (Input.GetKeyDown(KeyCode.Escape)) { return; }
+
     ListData.instance.foods.Add(new Recipe(foodIn.GetValue()));
     ListData.instance.SaveFoodList();
 

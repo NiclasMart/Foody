@@ -972,7 +972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9148458587411265168, guid: 029d0468d4c40ca45913696fa1f14588, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9148458587411265168, guid: 029d0468d4c40ca45913696fa1f14588, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4941,6 +4941,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56e8f1531fa66f4190afe8da7e26f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPressenter:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1545137158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5254,6 +5257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56e8f1531fa66f4190afe8da7e26f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPressenter:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1704138975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6848,6 +6854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56e8f1531fa66f4190afe8da7e26f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPressenter:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1337186031953667521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7494,6 +7503,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56e8f1531fa66f4190afe8da7e26f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPressenter:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1337186032547009537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7747,6 +7759,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56e8f1531fa66f4190afe8da7e26f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPressenter:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1337186032974614759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8105,6 +8120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56e8f1531fa66f4190afe8da7e26f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPressenter:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1337186033002595935
 MonoBehaviour:
   m_ObjectHideFlags: 0

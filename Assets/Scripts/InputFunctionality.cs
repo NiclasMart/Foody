@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class InputFunctionality : MonoBehaviour
 {
   TMP_InputField fieldIn;
+  public UnityEvent onPressenter = new UnityEvent();
 
   private void Awake()
   {
