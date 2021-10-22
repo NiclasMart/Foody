@@ -16,7 +16,7 @@ public static class SavingSystem
     return LoadFile(saveFile);
   }
 
-  private static string GetPathFromSaveFile(string saveFile)
+  public static string GetPathFromSaveFile(string saveFile)
   {
     return Path.Combine(Application.persistentDataPath, saveFile + ".eat");
   }

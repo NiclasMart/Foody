@@ -6,17 +6,23 @@ using System.Linq;
 public class RecipeAdder : MonoBehaviour
 {
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
+  string tmpPictureName = "";
+
+  private void Awake()
+  {
+    GetComponentInChildren<AddAndroidePicture>().onTakePicture += AddPicture;
+  }
 
   public void AddNewRecipe()
   {
     if (nameIn.GetValue() == "" || nameIn.GetValue() == " ") return;
-    
+
     Recipe newRecipe = new Recipe(nameIn.GetValue());
     newRecipe.link = linkIn.GetValue();
     newRecipe.tags = StringToList(tagsIn.GetValue());
     newRecipe.ingredients = ingredienceIn.GetValue();
     newRecipe.description = descriptionIn.GetValue();
-
+    newRecipe.picture = tmpPictureName;
     ClearInputFields();
 
     ListData.instance.AddRecipe(newRecipe);
@@ -31,6 +37,11 @@ public class RecipeAdder : MonoBehaviour
     return stringValue.Split(',').ToList();
   }
 
+  public void AddPicture(string name)
+  {
+    tmpPictureName = name;
+  }
+
   void ClearInputFields()
   {
     nameIn.ClearField();
@@ -38,6 +49,7 @@ public class RecipeAdder : MonoBehaviour
     tagsIn.ClearField();
     ingredienceIn.ClearField();
     descriptionIn.ClearField();
+    tmpPictureName = "";
   }
 
 }

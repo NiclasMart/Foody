@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Recipe : IComparable<Recipe>
 {
   public string name;
-  //public Image picture;
+  public string picture;
   public string link;
   public string description;
   public string ingredients;
