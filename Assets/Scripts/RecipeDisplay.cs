@@ -9,6 +9,7 @@ public class RecipeDisplay : MonoBehaviour
 {
   [SerializeField] RectTransform showCard, editCard;
   [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagsField, ingredienceField, descriptionField;
+  [SerializeField] Image picture;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
   ListHandler listHandler;
   Recipe displayedRecipe;
@@ -27,9 +28,13 @@ public class RecipeDisplay : MonoBehaviour
     descriptionField.text = recipe.description;
     dateField.text = "Zuletzt gekocht: " + recipe.date;
 
+    picture.sprite = SavingSystem.LoadImageFromFile(recipe.picture);
+    if (picture.sprite == null) picture.gameObject.SetActive(false);
 
     displayedRecipe = recipe;
   }
+
+
 
   public void Delete()
   {

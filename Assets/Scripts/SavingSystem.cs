@@ -22,6 +22,24 @@ public static class SavingSystem
     File.Delete(path);
   }
 
+  public static Sprite LoadImageFromFile(string fileName)
+  {
+    byte[] bytes;
+    Texture2D tex;
+
+    string path = Path.Combine(Application.persistentDataPath, fileName);
+    if (File.Exists(path))
+    {
+      bytes = File.ReadAllBytes(path);
+
+      tex = new Texture2D(2, 2);
+      tex.LoadImage(bytes);
+
+      return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0, 0), 100f);
+    }
+    return null;
+  }
+
   public static string GetPathFromSaveFile(string saveFile)
   {
     return Path.Combine(Application.persistentDataPath, saveFile + ".eat");
