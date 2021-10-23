@@ -18,6 +18,7 @@ public static class SavingSystem
 
   public static void DeletePicture(string name)
   {
+    if (name == "") return;
     string path = Path.Combine(Application.persistentDataPath, name);
     File.Delete(path);
   }

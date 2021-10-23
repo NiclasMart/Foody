@@ -38,6 +38,7 @@ public class RecipeDisplay : MonoBehaviour
 
   public void Delete()
   {
+    SavingSystem.DeletePicture(displayedRecipe.picture);
     ListData.instance.DeleteRecipe(displayedRecipe);
     ListData.instance.SaveRecipeList();
     listHandler.ShowCompleteList();
