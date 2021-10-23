@@ -9,14 +9,17 @@ public class RecipeDisplay : MonoBehaviour
 {
   [SerializeField] RectTransform showCard, editCard;
   [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagsField, ingredienceField, descriptionField;
-  [SerializeField] Image picture;
+  [SerializeField] Image pictureField, pictureIn;
+  [SerializeField] AddAndroidePicture addAndroidePicture;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
+  string tmpPictureName = "";
   ListHandler listHandler;
   Recipe displayedRecipe;
 
   private void Awake()
   {
     listHandler = FindObjectOfType<ListHandler>();
+    addAndroidePicture.onTakePicture += AddPicture;
   }
   public void Display(Recipe recipe)
   {
@@ -28,13 +31,11 @@ public class RecipeDisplay : MonoBehaviour
     descriptionField.text = recipe.description;
     dateField.text = "Zuletzt gekocht: " + recipe.date;
 
-    picture.sprite = SavingSystem.LoadImageFromFile(recipe.picture);
-    if (picture.sprite == null) picture.gameObject.SetActive(false);
+    pictureField.sprite = SavingSystem.LoadImageFromFile(recipe.picture);
+    if (pictureField.sprite == null) pictureField.gameObject.SetActive(false);
 
     displayedRecipe = recipe;
   }
-
-
 
   public void Delete()
   {
@@ -64,6 +65,9 @@ public class RecipeDisplay : MonoBehaviour
   {
     ToggleEditingMode(false);
     Display(displayedRecipe);
+    //delete picture if one was made
+    if (tmpPictureName != displayedRecipe.picture) SavingSystem.DeletePicture(tmpPictureName);
+    tmpPictureName = "";
     GetComponent<Animator>().SetBool("EditActive", false);
     GetComponent<ScrollRect>().content = showCard;
   }
@@ -75,6 +79,12 @@ public class RecipeDisplay : MonoBehaviour
     displayedRecipe.tags = RecipeAdder.StringToList(tagsIn.GetValue());
     displayedRecipe.description = descriptionIn.GetValue();
     displayedRecipe.ingredients = ingredienceIn.GetValue();
+
+    if (tmpPictureName != "")
+    {
+      SavingSystem.DeletePicture(displayedRecipe.picture);
+      displayedRecipe.picture = tmpPictureName;
+    }
 
     listHandler.ShowCompleteList();
     ListData.instance.SaveRecipeList();
@@ -102,6 +112,12 @@ public class RecipeDisplay : MonoBehaviour
     ListData.instance.SaveFoodList();
   }
 
+  public void AddPicture(string name)
+  {
+    if (tmpPictureName != "") SavingSystem.DeletePicture(tmpPictureName);
+    tmpPictureName = name;
+  }
+
   private void FillContentInInputFields()
   {
     nameIn.SetValue(displayedRecipe.name);
@@ -109,6 +125,7 @@ public class RecipeDisplay : MonoBehaviour
     tagsIn.SetValue(TagsToString(displayedRecipe.tags));
     ingredienceIn.SetValue(displayedRecipe.ingredients);
     descriptionIn.SetValue(displayedRecipe.description);
+    pictureIn.sprite = SavingSystem.LoadImageFromFile(displayedRecipe.picture);
   }
 
   private string TagsToString(List<string> tags)

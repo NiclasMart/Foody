@@ -72,6 +72,7 @@ public class AddAndroidePicture : MonoBehaviour
 
     onTakePicture.Invoke(photoName);
 
+    camTexture.Stop();
     TogglePictureMode(false);
   }
 }
