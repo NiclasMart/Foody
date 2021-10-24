@@ -21,7 +21,7 @@ public class RecipeDisplay : MonoBehaviour
   private void Awake()
   {
     listHandler = FindObjectOfType<ListHandler>();
-    addAndroidePicture.onTakePicture += AddPicture;
+    if (addAndroidePicture) addAndroidePicture.onTakePicture += AddPicture;
   }
   public void Display(Recipe recipe)
   {
