@@ -8,6 +8,10 @@ public class RecipeListHandler : ListHandler
   List<Recipe> displayedList;
   int sortState = 0;
 
+  public override void Start()
+  {
+    FindObjectOfType<Searchbar>().ShowSearchResult();
+  }
   public override void ShowList(List<Recipe> list)
   {
     SortList(list);

@@ -8,7 +8,7 @@ public class ListHandler : MonoBehaviour
   [SerializeField] protected RecipeSlot recipeSlot;
   [SerializeField] protected Transform listTransform;
 
-  private void Start()
+  public virtual void Start()
   {
     ShowCompleteList();
   }
@@ -26,6 +26,7 @@ public class ListHandler : MonoBehaviour
       slot.Initialize(recipe);
     }
     CacheDisplayedList(list);
+
   }
 
   private void DeleteList()

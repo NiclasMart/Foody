@@ -39,9 +39,9 @@ public class RecipeAdder : MonoBehaviour
   {
     switch (dropdown.captionText.text)
     {
-      case "Kochen": return RecipeType.cook;
-      case "Backen": return RecipeType.bake;
-      default: return RecipeType.other;
+      case "Kochen": return RecipeType.Kochen;
+      case "Backen": return RecipeType.Backen;
+      default: return RecipeType.Sonstiges;
     }
   }
 

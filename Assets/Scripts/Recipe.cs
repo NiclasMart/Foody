@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public enum RecipeType
 {
-  cook,
-  bake,
-  other
+  Kochen,
+  Backen,
+  Sonstiges
 }
 
 [System.Serializable]
