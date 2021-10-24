@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class RecipeDisplay : MonoBehaviour
 {
   [SerializeField] RectTransform showCard, editCard;
+  [SerializeField] ShoppingAdder shoppingAdder;
   [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagsField, ingredienceField, descriptionField;
   [SerializeField] Image pictureField, pictureIn;
   [SerializeField] TMP_Dropdown dropdown;
@@ -60,6 +61,7 @@ public class RecipeDisplay : MonoBehaviour
   {
     GetComponent<Animator>().SetBool("EditActive", true);
     GetComponent<ScrollRect>().content = editCard;
+    shoppingAdder.gameObject.SetActive(false);
     ToggleEditingMode(true);
     StartCoroutine(FillContentInInputFields());
   }
@@ -122,13 +124,12 @@ public class RecipeDisplay : MonoBehaviour
     tmpPictureName = name;
   }
 
-  bool shoppingAdderActive = false;
   public void ToggleShoppingAdder()
   {
-    shoppingAdderActive = !shoppingAdderActive;
-    if (shoppingAdderActive) GetComponent<Animator>().Play("ShoppingAdderOut");
-    else GetComponent<Animator>().Play("ShoppingAdderIn");
-    //GetComponent<Animator>().SetBool("ShoppingAdderActive", shoppingAdderActive);
+    bool isActive = shoppingAdder.gameObject.activeSelf;
+    shoppingAdder.gameObject.SetActive(!isActive);
+    if (!isActive) shoppingAdder.gameObject.GetComponentInChildren<TMP_InputField>().Select();
+
   }
 
   private IEnumerator FillContentInInputFields()

@@ -93,12 +93,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -7782076930690826860}
     m_Position: {x: 330, y: 110, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 515894612875704969}
-    m_Position: {x: 240, y: -180, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -8381123756475755871}
-    m_Position: {x: 240, y: -110, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -169,12 +163,6 @@ AnimatorController:
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: EditActive
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: ShoppingAdderActive
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0

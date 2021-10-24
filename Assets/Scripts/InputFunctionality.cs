@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public class InputFunctionality : MonoBehaviour
 {
   TMP_InputField fieldIn;
-  public UnityEvent onPressenter = new UnityEvent();
 
   private void Awake()
   {
@@ -34,5 +33,10 @@ public class InputFunctionality : MonoBehaviour
   public void ToggleInteractionState(bool on)
   {
     fieldIn.interactable = on;
+  }
+
+  public void Select()
+  {
+    fieldIn.ActivateInputField();
   }
 }

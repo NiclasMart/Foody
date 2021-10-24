@@ -12,6 +12,7 @@ public class MenuHandler : MonoBehaviour
     animator = GetComponent<Animator>();
     ListData.instance.LoadRecipeList();
     ListData.instance.LoadFoodList();
+    ListData.instance.LoadShoppingList();
   }
 
   void Update()

@@ -6,6 +6,7 @@ public class ListData : MonoBehaviour
 {
   public List<Recipe> recipes = new List<Recipe>();
   public List<Recipe> foods = new List<Recipe>();
+  public Dictionary<string, int> purchases = new Dictionary<string, int>();
   public static ListData instance = null;
 
   private void Awake()
@@ -56,4 +57,17 @@ public class ListData : MonoBehaviour
     foods = (List<Recipe>)SavingSystem.Load("FoodList");
     if (foods == null) foods = new List<Recipe>();
   }
+
+  public void SaveShoppingList()
+  {
+    SavingSystem.Save(purchases, "ShoppingList");
+  }
+
+  public void LoadShoppingList()
+  {
+    purchases = (Dictionary<string, int>)SavingSystem.Load("ShoppingList");
+    if (purchases == null) purchases = new Dictionary<string, int>();
+  }
+
+
 }

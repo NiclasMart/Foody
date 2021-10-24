@@ -20,7 +20,7 @@ public class FoodListHandler : ListHandler
 
   public void AddNewFood(string msg)
   {
-    if (Input.GetKeyDown(KeyCode.Escape)) { return; }
+    if (Input.GetKeyDown(KeyCode.Escape)) return;
 
     ListData.instance.foods.Add(new Recipe(foodIn.GetValue()));
     ListData.instance.SaveFoodList();
