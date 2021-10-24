@@ -3,14 +3,19 @@ using UnityEngine;
 
 public class RecipeListHandler : ListHandler
 {
-
   [SerializeField] List<GameObject> sortIcons;
+  Searchbar searchbar;
   List<Recipe> displayedList;
   int sortState = 0;
 
+  private void Awake()
+  {
+    searchbar = FindObjectOfType<Searchbar>();
+  }
+
   public override void Start()
   {
-    FindObjectOfType<Searchbar>().ShowSearchResult();
+    ShowList(searchbar.ShowSearchResult());
   }
   public override void ShowList(List<Recipe> list)
   {
@@ -20,7 +25,7 @@ public class RecipeListHandler : ListHandler
 
   public override void ShowCompleteList()
   {
-    ShowList(ListData.instance.recipes);
+    ShowList(searchbar.ShowSearchResult());
   }
 
   public void ChangeSortOrder(int state)

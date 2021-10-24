@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
@@ -10,6 +11,7 @@ public class RecipeDisplay : MonoBehaviour
   [SerializeField] RectTransform showCard, editCard;
   [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagsField, ingredienceField, descriptionField;
   [SerializeField] Image pictureField, pictureIn;
+  [SerializeField] TMP_Dropdown dropdown;
   [SerializeField] AddAndroidePicture addAndroidePicture;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
   string tmpPictureName = "";
@@ -58,7 +60,7 @@ public class RecipeDisplay : MonoBehaviour
     GetComponent<Animator>().SetBool("EditActive", true);
     GetComponent<ScrollRect>().content = editCard;
     ToggleEditingMode(true);
-    FillContentInInputFields();
+    StartCoroutine(FillContentInInputFields());
   }
 
   public void ResetEditingMode()
@@ -79,6 +81,7 @@ public class RecipeDisplay : MonoBehaviour
     displayedRecipe.tags = RecipeAdder.StringToList(tagsIn.GetValue());
     displayedRecipe.description = descriptionIn.GetValue();
     displayedRecipe.ingredients = ingredienceIn.GetValue();
+    displayedRecipe.SetRecipeType(dropdown.captionText.text);
 
     if (tmpPictureName != "")
     {
@@ -118,14 +121,17 @@ public class RecipeDisplay : MonoBehaviour
     tmpPictureName = name;
   }
 
-  private void FillContentInInputFields()
+  private IEnumerator FillContentInInputFields()
   {
+    yield return new WaitForEndOfFrame();
+
     nameIn.SetValue(displayedRecipe.name);
     linkIn.SetValue(displayedRecipe.link);
     tagsIn.SetValue(TagsToString(displayedRecipe.tags));
     ingredienceIn.SetValue(displayedRecipe.ingredients);
     descriptionIn.SetValue(displayedRecipe.description);
     pictureIn.sprite = SavingSystem.LoadImageFromFile(displayedRecipe.picture);
+    dropdown.value = (int)displayedRecipe.type;
   }
 
   private string TagsToString(List<string> tags)

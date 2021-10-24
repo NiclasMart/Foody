@@ -27,22 +27,12 @@ public class RecipeAdder : MonoBehaviour
     newRecipe.tags = StringToList(tagsIn.GetValue());
     newRecipe.ingredients = ingredienceIn.GetValue();
     newRecipe.description = descriptionIn.GetValue();
-    newRecipe.type = EvaluateRecipeType();
+    newRecipe.SetRecipeType(dropdown.captionText.text);
     newRecipe.picture = tmpPictureName;
     ClearInputFields();
 
     ListData.instance.AddRecipe(newRecipe);
     ListData.instance.SaveRecipeList();
-  }
-
-  private RecipeType EvaluateRecipeType()
-  {
-    switch (dropdown.captionText.text)
-    {
-      case "Kochen": return RecipeType.Kochen;
-      case "Backen": return RecipeType.Backen;
-      default: return RecipeType.Sonstiges;
-    }
   }
 
   public static List<string> StringToList(string stringValue)
@@ -74,7 +64,7 @@ public class RecipeAdder : MonoBehaviour
     descriptionIn.ClearField();
     tmpPictureName = "";
     picture.sprite = null;
-    dropdown.captionText.text = "Kochen";
+    dropdown.value = 0;
   }
 
 }

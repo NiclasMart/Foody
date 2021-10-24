@@ -6,24 +6,19 @@ using TMPro;
 public class Searchbar : MonoBehaviour
 {
   [SerializeField] TMP_Dropdown dropdown;
-  RecipeListHandler listHandler;
   TMP_InputField input;
 
 
   private void Awake()
   {
-    listHandler = FindObjectOfType<RecipeListHandler>();
     input = GetComponent<TMP_InputField>();
   }
 
-  public void ShowSearchResult()
+  public List<Recipe> ShowSearchResult()
   {
     //handle recipe type
-    if (input.text == null || input.text == "")
-    {
-      listHandler.ShowList(FilterRecipeType());
-      return;
-    }
+    if (input.text == null || input.text == "") return FilterRecipeType();
+
 
     //handle search input
     List<Recipe> showList = new List<Recipe>();
@@ -44,7 +39,7 @@ public class Searchbar : MonoBehaviour
     }
     else SearchName(searchString, showList);
 
-    listHandler.ShowList(showList);
+    return showList;
   }
 
   public List<Recipe> FilterRecipeType()

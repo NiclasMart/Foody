@@ -36,4 +36,20 @@ public class Recipe : IComparable<Recipe>
     if (!DateTime.TryParse(this.date, out returnDate)) returnDate = DateTime.MinValue;
     return returnDate;
   }
+
+  public void SetRecipeType(string type)
+  {
+    switch (type)
+    {
+      case "Kochen": 
+        this.type = RecipeType.Kochen;
+      break;
+      case "Backen": 
+        this.type = RecipeType.Backen;
+      break;
+      default: 
+        this.type = RecipeType.Sonstiges;
+      break;
+    }
+  }
 }
