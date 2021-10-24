@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class RecipeAdder : MonoBehaviour
 {
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
+  [SerializeField] TMP_Dropdown dropdown;
   [SerializeField] Image picture;
   string tmpPictureName = "";
 
@@ -24,11 +27,22 @@ public class RecipeAdder : MonoBehaviour
     newRecipe.tags = StringToList(tagsIn.GetValue());
     newRecipe.ingredients = ingredienceIn.GetValue();
     newRecipe.description = descriptionIn.GetValue();
+    newRecipe.type = EvaluateRecipeType();
     newRecipe.picture = tmpPictureName;
     ClearInputFields();
 
     ListData.instance.AddRecipe(newRecipe);
     ListData.instance.SaveRecipeList();
+  }
+
+  private RecipeType EvaluateRecipeType()
+  {
+    switch (dropdown.captionText.text)
+    {
+      case "Kochen": return RecipeType.cook;
+      case "Backen": return RecipeType.bake;
+      default: return RecipeType.other;
+    }
   }
 
   public static List<string> StringToList(string stringValue)
@@ -60,6 +74,7 @@ public class RecipeAdder : MonoBehaviour
     descriptionIn.ClearField();
     tmpPictureName = "";
     picture.sprite = null;
+    dropdown.captionText.text = "Kochen";
   }
 
 }
