@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FoodList.unity
     guid: 94352f29828d0154d8df0e96bcfe756c
+  - enabled: 1
+    path: Assets/Scenes/ShoppingList.unity
+    guid: 090f12cff92419c4a9749f5ec54cd376
   m_configObjects: {}

@@ -22,11 +22,7 @@ public class ShoppingAdder : MonoBehaviour
     string newItem = input.GetValue().ToLower();
     if (newItem == "" || newItem == " ") return;
 
-    if (ListData.instance.purchases.ContainsKey(newItem))
-      ListData.instance.purchases[newItem] += 1;
-    else
-      ListData.instance.purchases.Add(newItem, 1);
-
+    ListData.instance.AddNewItemToShoppingCard(newItem);
     ListData.instance.SaveShoppingList();
 
     ClearInput();
@@ -39,9 +35,9 @@ public class ShoppingAdder : MonoBehaviour
     string searchInput = input.GetValue().ToLower();
     if (searchInput.Length < 3) return;
 
-    foreach (var item in ListData.instance.purchases.Keys)
+    foreach (var item in ListData.instance.purchases)
     {
-      if (item.Contains(searchInput)) ShowSearchItem(item);
+      if (item.Key.Contains(searchInput)) ShowSearchItem(item);
     }
   }
 
@@ -51,7 +47,7 @@ public class ShoppingAdder : MonoBehaviour
     ClearSearchList();
   }
 
-  private void ShowSearchItem(string item)
+  private void ShowSearchItem(KeyValuePair<string, int> item)
   {
     ShoppingSlot listItem = Instantiate(shoppingSlot, list);
     listItem.Initialize(item);

@@ -7,21 +7,32 @@ public class ShoppingSlot : MonoBehaviour
 {
   string itemName;
 
-  public void Initialize(string name)
+  public void Initialize(KeyValuePair<string, int> item)
   {
-    itemName = name;
-    ShowText(name);
+    this.itemName = item.Key;
+    ShowText();
   }
 
   public void AddItemToCard()
   {
     ListData.instance.purchases[itemName] += 1;
-    ShowText(itemName);
+    ShowText();
+
+    ShoppingListHandler listHandler = FindObjectOfType<ShoppingListHandler>();
+    if (listHandler) listHandler.ShowCompleteList();
+
+    ListData.instance.SaveShoppingList();
+
   }
 
-  private void ShowText(string name)
+  public void RemoveSlot()
   {
-    string displayedText = name + " " + ListData.instance.purchases[name] + "x";
+    FindObjectOfType<ShoppingListHandler>()?.DeleteItemFromList(itemName);
+  }
+
+  private void ShowText()
+  {
+    string displayedText = itemName + " " + ListData.instance.purchases[itemName] + "x";
     GetComponentInChildren<TextMeshProUGUI>().text = displayedText;
   }
 }

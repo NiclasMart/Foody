@@ -29,7 +29,7 @@ public class ListHandler : MonoBehaviour
 
   }
 
-  private void DeleteList()
+  protected void DeleteList()
   {
     foreach (Transform item in listTransform.transform)
     {
