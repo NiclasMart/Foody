@@ -10,7 +10,7 @@ public class RecipeDisplay : MonoBehaviour
 {
   [SerializeField] RectTransform showCard, editCard;
   [SerializeField] ShoppingAdder shoppingAdder;
-  [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagsField, ingredienceField, descriptionField;
+  [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagHeader, tagsField, ingredienceField, descriptionHeader, descriptionField;
   [SerializeField] Image pictureField, pictureIn;
   [SerializeField] TMP_Dropdown dropdown;
   [SerializeField] AddAndroidePicture addAndroidePicture;
@@ -28,15 +28,23 @@ public class RecipeDisplay : MonoBehaviour
   public void Display(Recipe recipe)
   {
     nameField.text = recipe.name;
+
+    linkField.gameObject.SetActive(recipe.link != "");
     linkField.text = BuildHyperlink(recipe.link);
-    dateField.text = recipe.date;
-    tagsField.text = TagsToString(recipe.tags);
+
+    string tags = TagsToString(recipe.tags);
+    tagHeader.gameObject.SetActive(tags != "");
+    tagsField.text = tags;
+
     ingredienceField.text = recipe.ingredients;
+
+    descriptionHeader.gameObject.SetActive(recipe.description != "");
     descriptionField.text = recipe.description;
+
     dateField.text = "Zuletzt gekocht: " + recipe.date;
 
     pictureField.sprite = SavingSystem.LoadImageFromFile(recipe.picture);
-    if (pictureField.sprite == null) pictureField.gameObject.SetActive(false);
+    pictureField.gameObject.SetActive(pictureField.sprite != null);
 
     displayedRecipe = recipe;
   }

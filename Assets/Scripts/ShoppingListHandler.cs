@@ -31,13 +31,26 @@ public class ShoppingListHandler : ListHandler
 
   public void ShowOnSubmit(string msg)
   {
-    ShowCompleteList();
+    StartCoroutine(UpdateList());
   }
 
   public void DeleteItemFromList(string name)
   {
     ListData.instance.purchases.Remove(name);
     ListData.instance.SaveShoppingList();
+    ShowCompleteList();
+  }
+
+  public void DeleteCompleteList()
+  {
+    ListData.instance.purchases = new Dictionary<string, int>();
+    ListData.instance.SaveShoppingList();
+    ShowCompleteList();
+  }
+
+  IEnumerator UpdateList()
+  {
+    yield return new WaitForEndOfFrame();
     ShowCompleteList();
   }
 }

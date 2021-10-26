@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuHandler : MonoBehaviour
 {
   Animator animator;
+  [SerializeField] TextMeshProUGUI pathDisplay;
 
   private void Start()
   {
@@ -13,6 +12,8 @@ public class MenuHandler : MonoBehaviour
     ListData.instance.LoadRecipeList();
     ListData.instance.LoadFoodList();
     ListData.instance.LoadShoppingList();
+
+    pathDisplay.text = Application.persistentDataPath;
   }
 
   void Update()
