@@ -22,7 +22,7 @@ public class RecipeDisplay : MonoBehaviour
   private void Awake()
   {
     listHandler = FindObjectOfType<ListHandler>();
-    ToggleShoppingAdder();
+    ToggleShoppingAdder(null);
     if (addAndroidePicture) addAndroidePicture.onTakePicture += AddPicture;
   }
   public void Display(Recipe recipe)
@@ -152,11 +152,12 @@ public class RecipeDisplay : MonoBehaviour
     tmpPictureName = name;
   }
 
-  public void ToggleShoppingAdder()
+  public void ToggleShoppingAdder(Image btn)
   {
     if (!shoppingAdder) return;
     bool isActive = shoppingAdder.gameObject.activeSelf;
     shoppingAdder.gameObject.SetActive(!isActive);
+    if (btn) btn.color = !isActive ? new Color32(43, 137, 35, 255) : new Color32(255, 255, 255, 255);
     if (!isActive) shoppingAdder.gameObject.GetComponentInChildren<TMP_InputField>().Select();
 
   }
