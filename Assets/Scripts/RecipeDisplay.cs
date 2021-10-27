@@ -11,7 +11,7 @@ public class RecipeDisplay : MonoBehaviour
   [SerializeField] RectTransform showCard, editCard;
   [SerializeField] ShoppingAdder shoppingAdder;
   [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagHeader, tagsField, ingredienceField, descriptionHeader, descriptionField;
-  [SerializeField] Image pictureField, pictureIn;
+  [SerializeField] Image pictureField, pictureIn, foodListButton;
   [SerializeField] TMP_Dropdown dropdown;
   [SerializeField] AddAndroidePicture addAndroidePicture;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
@@ -46,6 +46,7 @@ public class RecipeDisplay : MonoBehaviour
     pictureField.sprite = SavingSystem.LoadImageFromFile(recipe.picture);
     pictureField.gameObject.SetActive(pictureField.sprite != null);
 
+    SetButtonColor(ListData.instance.foods.Contains(recipe));
     displayedRecipe = recipe;
   }
 
@@ -121,9 +122,23 @@ public class RecipeDisplay : MonoBehaviour
 
   public void AddRecipeToFoodList()
   {
-    if (ListData.instance.foods.Contains(displayedRecipe)) return;
-    ListData.instance.foods.Add(displayedRecipe);
+    if (ListData.instance.foods.Contains(displayedRecipe))
+    {
+      ListData.instance.foods.Remove(displayedRecipe);
+      SetButtonColor(false);
+    }
+    else
+    {
+      ListData.instance.foods.Add(displayedRecipe);
+      SetButtonColor(true);
+    }
     ListData.instance.SaveFoodList();
+  }
+
+  private void SetButtonColor(bool foodInList)
+  {
+    if (foodInList) foodListButton.color = new Color32(43, 137, 35, 255);
+    else foodListButton.color = Color.white;
   }
 
   public void AddPicture(string name)
@@ -134,6 +149,7 @@ public class RecipeDisplay : MonoBehaviour
 
   public void ToggleShoppingAdder()
   {
+    if (!shoppingAdder) return;
     bool isActive = shoppingAdder.gameObject.activeSelf;
     shoppingAdder.gameObject.SetActive(!isActive);
     if (!isActive) shoppingAdder.gameObject.GetComponentInChildren<TMP_InputField>().Select();
