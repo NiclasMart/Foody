@@ -10,7 +10,7 @@ public class RecipeAdder : MonoBehaviour
 {
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
   [SerializeField] TMP_Dropdown dropdown;
-  [SerializeField] Image picture;
+  [SerializeField] Image picture, errorAlert;
   string tmpPictureName = "";
 
   private void Awake()
@@ -20,7 +20,13 @@ public class RecipeAdder : MonoBehaviour
 
   public void AddNewRecipe()
   {
-    if (nameIn.GetValue() == "" || nameIn.GetValue() == " ") return;
+    if (nameIn.GetValue() == ""
+      || nameIn.GetValue() == " "
+      || ListData.instance.recipes.Find(x => x.name == nameIn.GetValue()) != null)
+    {
+      StartCoroutine(ShowingAlert());
+      return;
+    }
 
     Recipe newRecipe = new Recipe(nameIn.GetValue());
     newRecipe.link = linkIn.GetValue();
@@ -65,6 +71,13 @@ public class RecipeAdder : MonoBehaviour
     tmpPictureName = "";
     picture.sprite = null;
     dropdown.value = 0;
+  }
+
+  IEnumerator ShowingAlert()
+  {
+    errorAlert.gameObject.SetActive(true);
+    yield return new WaitForSeconds(3f);
+    errorAlert.gameObject.SetActive(false);
   }
 
 }

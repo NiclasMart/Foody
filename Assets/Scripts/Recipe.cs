@@ -23,6 +23,10 @@ public class Recipe : IComparable<Recipe>
   public Recipe(string name)
   {
     this.name = name;
+    picture = "";
+    link = "";
+    description = "";
+    ingredients = "";
   }
 
   public int CompareTo(Recipe other)
@@ -41,15 +45,15 @@ public class Recipe : IComparable<Recipe>
   {
     switch (type)
     {
-      case "Kochen": 
+      case "Kochen":
         this.type = RecipeType.Kochen;
-      break;
-      case "Backen": 
+        break;
+      case "Backen":
         this.type = RecipeType.Backen;
-      break;
-      default: 
+        break;
+      default:
         this.type = RecipeType.Sonstiges;
-      break;
+        break;
     }
   }
 }
