@@ -7,12 +7,12 @@ using System;
 
 public class RecipeSlot : MonoBehaviour
 {
-  [SerializeField] Image typeIndicator;
-  [SerializeField] Color cookColor, bakeColor, otherColor;
-  Recipe recipe;
+  [SerializeField] protected Image typeIndicator;
+  [SerializeField] protected Color cookColor, bakeColor, otherColor;
+  protected Recipe recipe;
   
 
-  public void Initialize(Recipe recipe)
+  public virtual void Initialize(Recipe recipe)
   {
     this.recipe = recipe;
     GetComponentInChildren<TextMeshProUGUI>().text = recipe.name;

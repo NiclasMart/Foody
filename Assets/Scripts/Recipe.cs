@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public enum RecipeType
 {
@@ -55,5 +56,10 @@ public class Recipe : IComparable<Recipe>
         this.type = RecipeType.Sonstiges;
         break;
     }
+  }
+
+  public Sprite GetImage()
+  {
+    return SavingSystem.LoadImageFromFile(picture);
   }
 }

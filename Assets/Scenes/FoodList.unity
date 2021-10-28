@@ -1314,7 +1314,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 825490536}
+    m_TransformParent: {fileID: 991078750}
     m_Modifications:
     - target: {fileID: 3347596734142299837, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
       propertyPath: m_Pivot.x
@@ -1326,7 +1326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3347596734142299837, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3347596734142299837, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1350,7 +1350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3347596734142299837, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 136.03
+      value: 92.537
       objectReference: {fileID: 0}
     - target: {fileID: 3347596734142299837, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1382,11 +1382,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3347596734142299837, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 656.44507
+      value: 720.18
       objectReference: {fileID: 0}
     - target: {fileID: 3347596734142299837, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2681.115
+      value: -2612
       objectReference: {fileID: 0}
     - target: {fileID: 3347596734142299837, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1409,17 +1409,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6751663781207362994, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
       propertyPath: m_fontSize
-      value: 60
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751663781207362994, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6751663781207362994, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
       propertyPath: m_fontSizeBase
-      value: 60
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 7013362031991996522, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
       propertyPath: m_Name
       value: CookedBtn
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5529511846317091006, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07fcf5d1ebfeb3846a71a356ebbb6369, type: 3}
 --- !u!224 &650544923 stripped
 RectTransform:
@@ -1596,14 +1601,13 @@ RectTransform:
   - {fileID: 1430055244}
   - {fileID: 1178896023}
   - {fileID: 969883391}
-  - {fileID: 650544923}
   m_Father: {fileID: 1337186033954225062}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 656.44507, y: 0}
-  m_SizeDelta: {x: 1312.8901, y: 2749.1301}
+  m_SizeDelta: {x: 1312.8901, y: 2593.1}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &825490537
 MonoBehaviour:
@@ -2203,6 +2207,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7816974625770251929}
+  - {fileID: 650544923}
   m_Father: {fileID: 1112341811}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3374,8 +3379,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75
-  m_fontSizeBase: 75
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4686,8 +4691,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 5.422119}
-  m_SizeDelta: {x: 0, y: -570.2363}
+  m_AnchoredPosition: {x: 0, y: 34.417725}
+  m_SizeDelta: {x: 0, y: -628.2273}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1337186032242156873
 MonoBehaviour:
