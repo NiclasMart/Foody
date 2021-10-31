@@ -454,6 +454,7 @@ MonoBehaviour:
   bakeColor: {r: 1, g: 0.6901961, b: 0.22352941, a: 1}
   otherColor: {r: 0.38039216, g: 0.69803923, b: 0, a: 1}
   slotImage: {fileID: 1213086457640201134}
+  defaultImage: {fileID: 21300000, guid: 1ddd82b28d6cc1b43a48e9d4408da67b, type: 3}
 --- !u!1 &5945488782212527464
 GameObject:
   m_ObjectHideFlags: 0

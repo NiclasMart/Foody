@@ -44,7 +44,7 @@ public class RecipeDisplay : MonoBehaviour
     dateField.text = "Zuletzt gekocht: " + recipe.date;
 
     pictureField.sprite = SavingSystem.LoadImageFromFile(recipe.picture);
-    pictureField.gameObject.SetActive(pictureField.sprite != null);
+    pictureField.transform.parent.gameObject.SetActive(pictureField.sprite != null);
 
     SetButtonColor(ListData.instance.foods.Find(x => x.name == recipe.name) != null);
     displayedRecipe = recipe;
