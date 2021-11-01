@@ -9,13 +9,15 @@ using System;
 public class RecipeAdder : MonoBehaviour
 {
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
+  [SerializeField] TagFinder tagFinder;
   [SerializeField] TMP_Dropdown dropdown;
   [SerializeField] Image picture, errorAlert;
   string tmpPictureName = "";
 
   private void Awake()
   {
-    GetComponentInChildren<PictureAdder>().onTakePicture += AddPicture;
+    PictureAdder adder = GetComponentInChildren<PictureAdder>();
+    if (adder != null) adder.onTakePicture += AddPicture;
   }
 
   public void AddNewRecipe()
@@ -47,6 +49,40 @@ public class RecipeAdder : MonoBehaviour
     stringValue = stringValue.ToLower();
     stringValue = stringValue.Replace(" ", "");
     return stringValue.Split(',').ToList();
+  }
+
+  public void SearchAndDisplayTags()
+  {
+    tagFinder.ClearList();
+    List<string> tagList = StringToList(tagsIn.GetValue());
+    string currentTag = tagList.Count > 0 ? tagList[tagList.Count - 1] : "";
+
+    if (currentTag.Length < 3) return;
+
+    List<string> matchingTags = new List<string>();
+    foreach (var recipe in ListData.instance.recipes)
+    {
+      foreach (string tag in recipe.tags)
+      {
+        if (tag.StartsWith(currentTag) && !matchingTags.Contains(tag)) matchingTags.Add(tag);
+      }
+    }
+    tagFinder.DisplayTags(matchingTags);
+  }
+
+  public void FillInTag(string newTag)
+  {
+    List<string> tagList = StringToList(tagsIn.GetValue());
+    tagList[tagList.Count - 1] = newTag;
+
+    string tagString = "";
+    foreach (var tag in tagList)
+    {
+      tagString += (tag + ", ");
+    }
+    tagsIn.SetValue(tagString);
+    tagsIn.GetComponent<TMP_InputField>().caretPosition = tagString.Length;
+    tagsIn.Select();
   }
 
   public void AddPicture(string name)

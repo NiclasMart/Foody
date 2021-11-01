@@ -58,6 +58,17 @@ public class Recipe : IComparable<Recipe>
     }
   }
 
+  public string GetTagsAsString()
+  {
+    string tagString = "";
+    foreach (var tag in tags)
+    {
+      tagString += (tag + ", ");
+    }
+    if (tagString != "") tagString = tagString.Remove(tagString.Length - 2, 2);
+    return tagString;
+  }
+
   public Sprite GetImage()
   {
     return SavingSystem.LoadImageFromFile(picture);

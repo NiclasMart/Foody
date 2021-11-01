@@ -13,7 +13,6 @@ public class RecipeDisplay : MonoBehaviour
   [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagHeader, tagsField, ingredienceField, descriptionHeader, descriptionField;
   [SerializeField] Image pictureField, pictureIn, foodListButton;
   [SerializeField] TMP_Dropdown dropdown;
-  [SerializeField] PictureAdder pictureAdder;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
   string tmpPictureName = "";
   ListHandler listHandler;
@@ -23,9 +22,8 @@ public class RecipeDisplay : MonoBehaviour
   {
     listHandler = FindObjectOfType<ListHandler>();
     ToggleShoppingAdder(null);
-    if (pictureAdder) pictureAdder.onTakePicture += AddPicture;
   }
-  
+
   public void Display(Recipe recipe)
   {
     nameField.text = recipe.name;
@@ -33,7 +31,7 @@ public class RecipeDisplay : MonoBehaviour
     linkField.gameObject.SetActive(recipe.link != "");
     linkField.text = BuildHyperlink(recipe.link);
 
-    string tags = TagsToString(recipe.tags);
+    string tags = recipe.GetTagsAsString();
     tagHeader.gameObject.SetActive(tags != "");
     tagsField.text = tags;
 
@@ -147,12 +145,6 @@ public class RecipeDisplay : MonoBehaviour
     else foodListButton.color = Color.white;
   }
 
-  public void AddPicture(string name)
-  {
-    if (tmpPictureName != "") SavingSystem.DeletePicture(tmpPictureName);
-    tmpPictureName = name;
-  }
-
   public void ToggleShoppingAdder(Image btn)
   {
     if (!shoppingAdder) return;
@@ -169,22 +161,11 @@ public class RecipeDisplay : MonoBehaviour
 
     nameIn.SetValue(displayedRecipe.name);
     linkIn.SetValue(displayedRecipe.link);
-    tagsIn.SetValue(TagsToString(displayedRecipe.tags));
+    tagsIn.SetValue(displayedRecipe.GetTagsAsString());
     ingredienceIn.SetValue(displayedRecipe.ingredients);
     descriptionIn.SetValue(displayedRecipe.description);
     pictureIn.sprite = SavingSystem.LoadImageFromFile(displayedRecipe.picture);
     dropdown.value = (int)displayedRecipe.type;
-  }
-
-  private string TagsToString(List<string> tags)
-  {
-    string tagString = "";
-    foreach (var tag in tags)
-    {
-      tagString += (tag + ", ");
-    }
-    if (tagString != "") tagString = tagString.Remove(tagString.Length - 2, 2);
-    return tagString;
   }
 
   private string BuildHyperlink(string link)
