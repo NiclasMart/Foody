@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class LotterySlot : RecipeSlot
 {
   [SerializeField] Image slotImage;
+  [SerializeField] Sprite defaultImage;
+
   public override void Initialize(Recipe recipe)
   {
     if (recipe == null)
@@ -18,5 +20,6 @@ public class LotterySlot : RecipeSlot
     base.Initialize(recipe);
     Sprite image = recipe.GetImage();
     if (image != null) slotImage.sprite = image;
+    else slotImage.sprite = defaultImage;
   }
 }
