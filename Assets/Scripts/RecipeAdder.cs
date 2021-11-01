@@ -48,7 +48,9 @@ public class RecipeAdder : MonoBehaviour
     if (stringValue == "" || stringValue == " ") return new List<string>();
     stringValue = stringValue.ToLower();
     stringValue = stringValue.Replace(" ", "");
-    return stringValue.Split(',').ToList();
+    List<string> tagList = stringValue.Split(',').ToList();
+    tagList.Remove(""); 
+    return tagList;
   }
 
   public void SearchAndDisplayTags()

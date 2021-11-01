@@ -2628,6 +2628,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5453253426619549887, guid: 04adb7e53f9f0304db3efe7b05678fdd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 221.8736
+      objectReference: {fileID: 0}
     - target: {fileID: 5763846855398463258, guid: 04adb7e53f9f0304db3efe7b05678fdd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -7308,8 +7312,8 @@ MonoBehaviour:
   pictureField: {fileID: 2730765102216265381}
   pictureIn: {fileID: 0}
   foodListButton: {fileID: 2730765100522025896}
+  tagSearchbar: {fileID: 0}
   dropdown: {fileID: 0}
-  addAndroidePicture: {fileID: 0}
   nameIn: {fileID: 2730765101400801593}
   linkIn: {fileID: 0}
   tagsIn: {fileID: 0}

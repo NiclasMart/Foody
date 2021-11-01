@@ -12,6 +12,7 @@ public class RecipeDisplay : MonoBehaviour
   [SerializeField] ShoppingAdder shoppingAdder;
   [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagHeader, tagsField, ingredienceField, descriptionHeader, descriptionField;
   [SerializeField] Image pictureField, pictureIn, foodListButton;
+  [SerializeField] TagSearchbar tagSearchbar;
   [SerializeField] TMP_Dropdown dropdown;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
   string tmpPictureName = "";
@@ -106,6 +107,8 @@ public class RecipeDisplay : MonoBehaviour
 
     listHandler.ShowCompleteList();
     ListData.instance.SaveRecipeList();
+
+    if (tagSearchbar) tagSearchbar.RefreshTagList();
 
     ResetEditingMode();
   }
