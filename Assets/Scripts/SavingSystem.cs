@@ -6,6 +6,7 @@ using UnityEngine;
 
 public static class SavingSystem
 {
+  public static string DataPath => Path.Combine(Application.persistentDataPath, "Data");
   public static void Save(object data, string saveFile)
   {
     SaveFile(saveFile, data);
@@ -19,7 +20,7 @@ public static class SavingSystem
   public static void DeletePicture(string name)
   {
     if (name == "") return;
-    string path = Path.Combine(Application.persistentDataPath, name);
+    string path = Path.Combine(DataPath, name);
     File.Delete(path);
   }
 
@@ -28,7 +29,7 @@ public static class SavingSystem
     byte[] bytes;
     Texture2D tex;
 
-    string path = Path.Combine(Application.persistentDataPath, fileName);
+    string path = Path.Combine(DataPath, fileName);
     if (File.Exists(path))
     {
       bytes = File.ReadAllBytes(path);
@@ -43,7 +44,7 @@ public static class SavingSystem
 
   public static string GetPathFromSaveFile(string saveFile)
   {
-    return Path.Combine(Application.persistentDataPath, saveFile + ".eat");
+    return Path.Combine(DataPath, saveFile + ".eat");
   }
 
   private static void SaveFile(string saveFile, object data)

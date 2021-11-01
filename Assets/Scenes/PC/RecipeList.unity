@@ -2967,6 +2967,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1679861538624131870, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3484539537954172009}
+    - target: {fileID: 1679861538624131870, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RetrieveImageFromClipboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679861538624131870, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AddPcPicture, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2174850771614428196, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3363,6 +3375,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2509966946117584953, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: pictureAdder
+      value: 
+      objectReference: {fileID: 3484539537954172009}
     - target: {fileID: 2509966946117584954, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
       propertyPath: m_Name
       value: RecipeCard
@@ -3407,5 +3423,23 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1679861538425258330, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+--- !u!1 &3484539537954172008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6778574488116947842, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+  m_PrefabInstance: {fileID: 3484539537954172007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3484539537954172009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484539537954172008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797c89c51bcf3784db1e3c05caa7e1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

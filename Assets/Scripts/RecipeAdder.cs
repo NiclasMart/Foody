@@ -15,7 +15,7 @@ public class RecipeAdder : MonoBehaviour
 
   private void Awake()
   {
-    GetComponentInChildren<AddAndroidePicture>().onTakePicture += AddPicture;
+    GetComponentInChildren<PictureAdder>().onTakePicture += AddPicture;
   }
 
   public void AddNewRecipe()

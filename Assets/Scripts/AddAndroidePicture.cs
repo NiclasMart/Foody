@@ -5,15 +5,13 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AddAndroidePicture : MonoBehaviour
+public class AddAndroidePicture : PictureAdder
 {
   [SerializeField] GameObject picturePanel;
   [SerializeField] RawImage liveFeed;
   WebCamTexture camTexture;
 
   bool isLive = false;
-
-  public Action<string> onTakePicture;
 
   private void Start()
   {
@@ -61,7 +59,7 @@ public class AddAndroidePicture : MonoBehaviour
     byte[] bytes = photo.EncodeToPNG();
     //Write out the PNG. Of course you have to substitute your_path for something sensible
     string photoName = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".png";
-    string path = Path.Combine(Application.persistentDataPath, photoName);
+    string path = Path.Combine(SavingSystem.DataPath, photoName);
     File.WriteAllBytes(path, bytes);
 
     Texture2D tex = new Texture2D(2, 2);

@@ -13,7 +13,7 @@ public class RecipeDisplay : MonoBehaviour
   [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagHeader, tagsField, ingredienceField, descriptionHeader, descriptionField;
   [SerializeField] Image pictureField, pictureIn, foodListButton;
   [SerializeField] TMP_Dropdown dropdown;
-  [SerializeField] AddAndroidePicture addAndroidePicture;
+  [SerializeField] PictureAdder pictureAdder;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
   string tmpPictureName = "";
   ListHandler listHandler;
@@ -23,8 +23,9 @@ public class RecipeDisplay : MonoBehaviour
   {
     listHandler = FindObjectOfType<ListHandler>();
     ToggleShoppingAdder(null);
-    if (addAndroidePicture) addAndroidePicture.onTakePicture += AddPicture;
+    if (pictureAdder) pictureAdder.onTakePicture += AddPicture;
   }
+  
   public void Display(Recipe recipe)
   {
     nameField.text = recipe.name;
