@@ -19,4 +19,14 @@ public class TagCard : MonoBehaviour
       FindObjectOfType<RecipeAdder>().FillInTag(foodTag);
       transform.parent.GetComponent<TagFinder>().ClearList();
     }
+
+    public string GetTag()
+    {
+      return foodTag;
+    }
+
+    public bool IsSelected()
+    {
+      return GetComponentInChildren<Toggle>().isOn;
+    }
 }

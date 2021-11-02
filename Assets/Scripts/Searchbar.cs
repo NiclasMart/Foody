@@ -42,6 +42,12 @@ public class Searchbar : MonoBehaviour
     return showList;
   }
 
+  public void Fill(string term)
+  {
+    input.text = term;
+    ShowSearchResult();
+  }
+
   public List<Recipe> FilterRecipeType()
   {
     if (dropdown.captionText.text == "Alle") return ListData.instance.recipes;

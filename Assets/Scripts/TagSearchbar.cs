@@ -29,6 +29,16 @@ public class TagSearchbar : MonoBehaviour
     }
   }
 
+  public void FillTagsInSearchbar()
+  {
+    string searchTerm = "#tag ";
+    foreach (var tagSlot in contentTransform.GetComponentsInChildren<TagCard>())
+    {
+      if (tagSlot.IsSelected()) searchTerm = searchTerm + tagSlot.GetTag() + " ";
+    }
+    searchbar.Fill(searchTerm);
+  }
+
   public List<string> FindAllTags()
   {
     List<string> uniqueTags = new List<string>();
@@ -52,7 +62,7 @@ public class TagSearchbar : MonoBehaviour
     }
   }
 
-  internal void RefreshTagList()
+  public void RefreshTagList()
   {
     DeleteList();
     DisplayAllTags();
