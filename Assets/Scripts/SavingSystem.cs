@@ -46,6 +46,35 @@ public static class SavingSystem
     
   }
 
+  public static List<Recipe> ImportData(string fileName)
+  {
+    string path = Path.Combine(Application.persistentDataPath, "ExportData");
+    string importDataPath = Path.Combine(path, fileName + ".eat");
+    List<Recipe> importData = (List<Recipe>)LoadFile(importDataPath);
+
+    int nameCounter = 0;
+    foreach (var recipe in importData)
+    {
+      //change name
+      recipe.name = recipe.name + " (neu)";
+      if (ListData.instance.recipes.Find(x => x.name == recipe.name) != null) recipe.name =recipe.name + " -d"; 
+
+      //copy image
+      if (recipe.picture != "")
+      {
+        string imagePath = Path.Combine(path, recipe.picture);
+        string newImageName = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + nameCounter.ToString() + ".png";
+        string newImagePath = Path.Combine(DataPath, newImageName);
+        File.Copy(imagePath, newImagePath);
+        recipe.picture = newImageName;
+      }
+      nameCounter++;
+    }
+    
+    Directory.Delete(path, true);
+    return importData;
+  }
+
   public static Sprite LoadImageFromFile(string fileName)
   {
     byte[] bytes;

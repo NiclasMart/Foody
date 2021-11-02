@@ -23,7 +23,7 @@ public class RecipeListHandler : ListHandler
   {
     exportModeActive =true;
     ToggleExportMode();
-    
+
     SortList(list);
     base.ShowList(list);
   }
@@ -53,7 +53,7 @@ public class RecipeListHandler : ListHandler
       if (recipeSlot.ExportRecipe()) exportList.Add(recipeSlot.GetRecipe());
     }
 
-    if (exportList.Count > 0) SavingSystem.ExportData(exportList, "ExportData");
+    if (exportList.Count > 0) SavingSystem.ExportData(exportList, "ExportRecipeList");
     ToggleExportMode();
   }
 
