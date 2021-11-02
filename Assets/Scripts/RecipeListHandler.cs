@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RecipeListHandler : ListHandler
 {
   [SerializeField] List<GameObject> sortIcons;
+  [SerializeField] GameObject exportBtn;
   Searchbar searchbar;
   List<Recipe> displayedList;
   int sortState = 0;
@@ -19,6 +21,9 @@ public class RecipeListHandler : ListHandler
   }
   public override void ShowList(List<Recipe> list)
   {
+    exportModeActive =true;
+    ToggleExportMode();
+    
     SortList(list);
     base.ShowList(list);
   }
@@ -26,6 +31,30 @@ public class RecipeListHandler : ListHandler
   public override void ShowCompleteList()
   {
     ShowList(searchbar.ShowSearchResult());
+  }
+
+  bool exportModeActive = false;
+  public void ToggleExportMode()
+  {
+    exportModeActive = !exportModeActive;
+    exportBtn.SetActive(exportModeActive);
+    foreach (Transform slot in listTransform)
+    {
+      slot.GetComponentInChildren<RecipeSlot>().ToggleExportOption(exportModeActive);
+    }
+  }
+
+  public void ExportRecieps()
+  {
+    List<Recipe> exportList = new List<Recipe>();
+    foreach (Transform slot in listTransform)
+    {
+      RecipeSlot recipeSlot = slot.GetComponentInChildren<RecipeSlot>();
+      if (recipeSlot.ExportRecipe()) exportList.Add(recipeSlot.GetRecipe());
+    }
+
+    if (exportList.Count > 0) SavingSystem.ExportData(exportList, "ExportData");
+    ToggleExportMode();
   }
 
   public void ChangeSortOrder(int state)

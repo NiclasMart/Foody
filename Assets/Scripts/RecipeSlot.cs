@@ -9,8 +9,9 @@ public class RecipeSlot : MonoBehaviour
 {
   [SerializeField] protected Image typeIndicator;
   [SerializeField] protected Color cookColor, bakeColor, otherColor;
+  [SerializeField] Toggle toggle;
   protected Recipe recipe;
-  
+
 
   public virtual void Initialize(Recipe recipe)
   {
@@ -23,12 +24,15 @@ public class RecipeSlot : MonoBehaviour
   {
     switch (type)
     {
-      case RecipeType.Kochen: typeIndicator.color = cookColor;
-      break;
-      case RecipeType.Backen: typeIndicator.color = bakeColor;
-      break;
-      default: typeIndicator.color = otherColor;
-      break;
+      case RecipeType.Kochen:
+        typeIndicator.color = cookColor;
+        break;
+      case RecipeType.Backen:
+        typeIndicator.color = bakeColor;
+        break;
+      default:
+        typeIndicator.color = otherColor;
+        break;
     }
   }
 
@@ -42,5 +46,21 @@ public class RecipeSlot : MonoBehaviour
   public void DeleteSlot()
   {
     FindObjectOfType<FoodListHandler>()?.DeleteFoodFromList(recipe);
+  }
+
+  public Recipe GetRecipe()
+  {
+    return recipe;
+  }
+
+  public bool ExportRecipe()
+  {
+    return GetComponentInChildren<Toggle>().isOn;
+  }
+
+  public void ToggleExportOption(bool on)
+  {
+    toggle.gameObject.SetActive(on);
+    if (!on) toggle.isOn = false;
   }
 }
