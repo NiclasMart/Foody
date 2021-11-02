@@ -905,9 +905,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShoppingAdder
       objectReference: {fileID: 0}
+    - target: {fileID: 6652070339023191219, guid: b902c288cdc79944298d988877a21990, type: 3}
+      propertyPath: shoppingSlot
+      value: 
+      objectReference: {fileID: 6729164411600583759, guid: e5bd734acda17474db601aef520f2bc6, type: 3}
     - target: {fileID: 6652070339536456526, guid: b902c288cdc79944298d988877a21990, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716200002945492064, guid: b902c288cdc79944298d988877a21990, type: 3}
+      propertyPath: m_fontSize
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716200002945492064, guid: b902c288cdc79944298d988877a21990, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716200003026630792, guid: b902c288cdc79944298d988877a21990, type: 3}
+      propertyPath: m_fontSize
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716200003026630792, guid: b902c288cdc79944298d988877a21990, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b902c288cdc79944298d988877a21990, type: 3}
@@ -1281,7 +1301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeSlot: {fileID: 0}
   listTransform: {fileID: 320517564}
-  shoppingSlot: {fileID: 3893698948057767471, guid: 4407c83fbb5983d4186d849d1db5b1ae, type: 3}
+  shoppingSlot: {fileID: 3579071468373798305, guid: 53fa05b99b1a95340a6367292d9826c0, type: 3}
   purchaseIn: {fileID: 607350156}
 --- !u!1 &1477962453
 GameObject:

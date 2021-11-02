@@ -1460,12 +1460,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 825490536}
+  m_Father: {fileID: 1790999250}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 656.44507, y: -436}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1312.8901, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &657412549
@@ -1587,7 +1587,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 657412548}
+  - {fileID: 1790999250}
   - {fileID: 94584603}
   - {fileID: 927132692}
   - {fileID: 1927980759}
@@ -3013,7 +3013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a661f96933448e044bb8ec044a6ca25d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeSlot: {fileID: 125625706601081713, guid: 9f4aa72e9b9a03744998341fc8297415, type: 3}
+  recipeSlot: {fileID: 8357360333891251042, guid: 482891c6ac8ddb84dac82f4fad4359b8, type: 3}
   listTransform: {fileID: 320517564}
   foodIn: {fileID: 1545137157}
 --- !u!1001 &1430055243
@@ -3926,6 +3926,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704138972}
   m_CullTransparentMesh: 1
+--- !u!1 &1790999249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1790999250}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1790999250
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790999249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 657412548}
+  m_Father: {fileID: 825490536}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 656.44507, y: -436}
+  m_SizeDelta: {x: 1312.8901, y: 720}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1845568797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4829,8 +4865,8 @@ MonoBehaviour:
   pictureField: {fileID: 657412549}
   pictureIn: {fileID: 0}
   foodListButton: {fileID: 0}
+  tagSearchbar: {fileID: 0}
   dropdown: {fileID: 0}
-  addAndroidePicture: {fileID: 0}
   nameIn: {fileID: 1704138974}
   linkIn: {fileID: 0}
   tagsIn: {fileID: 0}
