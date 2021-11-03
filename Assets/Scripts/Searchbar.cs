@@ -76,7 +76,7 @@ public class Searchbar : MonoBehaviour
       for (int i = 1; i < ingredients.Length; i++)
       {
         if (ingredients[i] == "") continue;
-        if (!recipe.ingredients.Contains(ingredients[i]))
+        if (!recipe.ingredients.ToLower().Contains(ingredients[i]))
         {
           containsIngredients = false;
           break;
