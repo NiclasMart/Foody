@@ -44,6 +44,8 @@ public class TagSearchbar : MonoBehaviour
     List<string> uniqueTags = new List<string>();
     foreach (var recipe in ListData.instance.recipes)
     {
+      string dropdownText = searchbar.dropdown.captionText.text;
+      if (dropdownText != "Alle" && dropdownText != recipe.type.ToString()) continue;
       foreach (string tag in recipe.tags)
       {
         if (!uniqueTags.Contains(tag)) uniqueTags.Add(tag);

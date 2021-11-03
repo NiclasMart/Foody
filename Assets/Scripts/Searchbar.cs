@@ -5,7 +5,7 @@ using TMPro;
 
 public class Searchbar : MonoBehaviour
 {
-  [SerializeField] TMP_Dropdown dropdown;
+  [SerializeField] public TMP_Dropdown dropdown;
   TMP_InputField input;
 
 
