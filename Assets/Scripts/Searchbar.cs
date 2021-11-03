@@ -91,7 +91,7 @@ public class Searchbar : MonoBehaviour
   {
     foreach (var recipe in ListData.instance.recipes)
     {
-      if (recipe.name.Contains(searchString)) showList.Add(recipe);
+      if (recipe.name.ToLower().Contains(searchString)) showList.Add(recipe);
     }
   }
 
