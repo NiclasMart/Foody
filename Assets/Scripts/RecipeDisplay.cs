@@ -10,11 +10,11 @@ public class RecipeDisplay : MonoBehaviour
 {
   [SerializeField] RectTransform showCard, editCard;
   [SerializeField] ShoppingAdder shoppingAdder;
-  [SerializeField] TextMeshProUGUI nameField, linkField, dateField, tagHeader, tagsField, ingredienceField, descriptionHeader, descriptionField;
-  [SerializeField] Image pictureField, pictureIn, foodListButton;
+  [SerializeField] TextMeshProUGUI nameField, linkField, dateField, date2Field, tagHeader, tagsField, ingredienceField, descriptionHeader, descriptionField, noteHeader, noteField;
+  [SerializeField] Image pictureField, pictureIn, foodListButton, markerButton;
   [SerializeField] TagSearchbar tagSearchbar;
   [SerializeField] TMP_Dropdown dropdown;
-  [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
+  [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn, noteIn;
   string tmpPictureName = "";
   ListHandler listHandler;
   Recipe displayedRecipe;
@@ -41,12 +41,17 @@ public class RecipeDisplay : MonoBehaviour
     descriptionHeader.gameObject.SetActive(recipe.description != "");
     descriptionField.text = recipe.description;
 
-    dateField.text = "Zuletzt gekocht: " + recipe.date;
+    noteHeader.gameObject.SetActive(recipe.note != "");
+    noteField.text = recipe.note;
+
+    dateField.text = "Zuletzt gekocht am: " + recipe.date;
+    date2Field.text = "Hinzugefügt am: " + recipe.creationDate;
 
     pictureField.sprite = SavingSystem.LoadImageFromFile(recipe.picture);
     pictureField.transform.parent.gameObject.SetActive(pictureField.sprite != null);
 
-    SetButtonColor(ListData.instance.foods.Find(x => x.name == recipe.name) != null);
+    SetButtonColor(foodListButton, ListData.instance.foods.Find(x => x.name == recipe.name) != null);
+    SetButtonColor(markerButton, recipe.marked);
     displayedRecipe = recipe;
   }
 
@@ -98,6 +103,7 @@ public class RecipeDisplay : MonoBehaviour
     displayedRecipe.description = descriptionIn.GetValue();
     displayedRecipe.ingredients = ingredienceIn.GetValue();
     displayedRecipe.SetRecipeType(dropdown.captionText.text);
+    displayedRecipe.note = noteIn.GetValue();
 
     if (tmpPictureName != "")
     {
@@ -126,26 +132,33 @@ public class RecipeDisplay : MonoBehaviour
     showCard.gameObject.SetActive(!on);
   }
 
-  public void AddRecipeToFoodList()
+  public void AddRecipeToFoodList(Image btn)
   {
     if (ListData.instance.foods.Find(x => x.name == displayedRecipe.name) != null)
     {
       ListData.instance.foods.RemoveAll(x => x.name == displayedRecipe.name);
-      SetButtonColor(false);
+      SetButtonColor(btn, false);
     }
     else
     {
       ListData.instance.foods.Add(displayedRecipe);
-      SetButtonColor(true);
+      SetButtonColor(btn, true);
     }
     ListData.instance.SaveFoodList();
   }
 
-  private void SetButtonColor(bool foodInList)
+  public void MarkRecipe(Image btn)
   {
-    if (!foodListButton) return;
-    if (foodInList) foodListButton.color = new Color32(43, 137, 35, 255);
-    else foodListButton.color = Color.white;
+    displayedRecipe.marked = !displayedRecipe.marked;
+    SetButtonColor(btn, displayedRecipe.marked);
+    ListData.instance.SaveRecipeList();
+  }
+
+  private void SetButtonColor(Image btn, bool active)
+  {
+    if (!btn) return;
+    if (active) btn.color = new Color32(43, 137, 35, 255);
+    else btn.color = Color.white;
   }
 
   public void ToggleShoppingAdder(Image btn)
@@ -167,6 +180,7 @@ public class RecipeDisplay : MonoBehaviour
     tagsIn.SetValue(displayedRecipe.GetTagsAsString());
     ingredienceIn.SetValue(displayedRecipe.ingredients);
     descriptionIn.SetValue(displayedRecipe.description);
+    noteIn.SetValue(displayedRecipe.note);
     pictureIn.sprite = SavingSystem.LoadImageFromFile(displayedRecipe.picture);
     dropdown.value = (int)displayedRecipe.type;
   }

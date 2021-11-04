@@ -58,7 +58,8 @@ public class Searchbar : MonoBehaviour
     List<Recipe> showList = new List<Recipe>();
     foreach (var recipe in ListData.instance.recipes)
     {
-      if (recipe.type.ToString() == dropdown.captionText.text) showList.Add(recipe);
+      if (dropdown.captionText.text == "Markiert" && recipe.marked
+        || recipe.type.ToString() == dropdown.captionText.text) showList.Add(recipe);
     }
     return showList;
   }

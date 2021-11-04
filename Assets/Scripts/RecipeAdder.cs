@@ -8,7 +8,7 @@ using System;
 
 public class RecipeAdder : MonoBehaviour
 {
-  [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn;
+  [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn, noteIn;
   [SerializeField] TagFinder tagFinder;
   [SerializeField] TMP_Dropdown dropdown;
   [SerializeField] Image picture, errorAlert;
@@ -37,6 +37,7 @@ public class RecipeAdder : MonoBehaviour
     newRecipe.description = descriptionIn.GetValue();
     newRecipe.SetRecipeType(dropdown.captionText.text);
     newRecipe.picture = tmpPictureName;
+    newRecipe.note = noteIn.GetValue();
     ClearInputFields();
 
     ListData.instance.AddRecipe(newRecipe);
@@ -49,7 +50,7 @@ public class RecipeAdder : MonoBehaviour
     stringValue = stringValue.ToLower();
     stringValue = stringValue.Replace(" ", "");
     List<string> tagList = stringValue.Split(',').ToList();
-    tagList.Remove(""); 
+    tagList.Remove("");
     return tagList;
   }
 

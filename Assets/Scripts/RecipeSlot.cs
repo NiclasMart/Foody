@@ -8,7 +8,7 @@ using System;
 public class RecipeSlot : MonoBehaviour
 {
   [SerializeField] protected Image typeIndicator;
-  [SerializeField] protected Color cookColor, bakeColor, otherColor;
+  [SerializeField] protected Color cookColor, bakeColor, otherColor, markedColor;
   [SerializeField] Toggle toggle;
   protected Recipe recipe;
 
@@ -18,6 +18,13 @@ public class RecipeSlot : MonoBehaviour
     this.recipe = recipe;
     GetComponentInChildren<TextMeshProUGUI>().text = recipe.name;
     SetIndicatorColor(recipe.type);
+    SetMarkedColor(recipe.marked);
+  }
+
+  private void SetMarkedColor(bool marked)
+  {
+    if (marked) GetComponent<Image>().color = markedColor;
+    else GetComponent<Image>().color = Color.white;
   }
 
   private void SetIndicatorColor(RecipeType type)

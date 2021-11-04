@@ -7,6 +7,7 @@ public class TagSearchbar : MonoBehaviour
   [SerializeField] Searchbar searchbar;
   [SerializeField] TagCard tagCard;
   [SerializeField] Transform contentTransform;
+  [SerializeField] RecipeListHandler listHandler;
 
   private void Awake()
   {
@@ -42,10 +43,8 @@ public class TagSearchbar : MonoBehaviour
   public List<string> FindAllTags()
   {
     List<string> uniqueTags = new List<string>();
-    foreach (var recipe in ListData.instance.recipes)
+    foreach (var recipe in listHandler.displayedList)
     {
-      string dropdownText = searchbar.dropdown.captionText.text;
-      if (dropdownText != "Alle" && dropdownText != recipe.type.ToString()) continue;
       foreach (string tag in recipe.tags)
       {
         if (!uniqueTags.Contains(tag)) uniqueTags.Add(tag);

@@ -7,7 +7,7 @@ public class RecipeListHandler : ListHandler
   [SerializeField] List<GameObject> sortIcons;
   [SerializeField] GameObject exportBtn;
   Searchbar searchbar;
-  List<Recipe> displayedList;
+  [HideInInspector] public List<Recipe> displayedList;
   int sortState = 0;
 
   private void Awake()
@@ -21,7 +21,7 @@ public class RecipeListHandler : ListHandler
   }
   public override void ShowList(List<Recipe> list)
   {
-    exportModeActive =true;
+    exportModeActive = true;
     ToggleExportMode();
 
     SortList(list);
@@ -59,9 +59,9 @@ public class RecipeListHandler : ListHandler
 
   public void ChangeSortOrder(int state)
   {
-    ListData.instance.LoadRecipeList();
-    sortState ^= 1;
-    sortState ^= (-(state >> 1) ^ sortState) & (1 << 1);
+    int order = sortState >> 2;
+    order ^= 1;
+    sortState = 4 * order + state;
     SetSortIcons();
     ShowList(displayedList);
 
@@ -73,16 +73,23 @@ public class RecipeListHandler : ListHandler
 
   private void SortList(List<Recipe> list)
   {
-    //sort name
-    if (((sortState >> 1) & 1) == 0)
+    switch (sortState & 3)
     {
-      if ((sortState & 1) == 1) list.Sort((a, b) => b.name.CompareTo(a.name));
-      else list.Sort();
-    }
-    else
-    {
-      if ((sortState & 1) == 1) list.Sort((a, b) => b.GetDate().CompareTo(a.GetDate()));
-      else list.Sort((a, b) => a.GetDate().CompareTo(b.GetDate()));
+      case 0: //name
+        Debug.Log("Sort name");
+        if (sortState >> 2 == 1) list.Sort((a, b) => b.name.CompareTo(a.name));
+        else list.Sort();
+      break;
+      case 1: //cook date
+        Debug.Log("Sort cook date");
+        if (sortState >> 2 == 1) list.Sort((a, b) => b.GetCookDate().CompareTo(a.GetCookDate()));
+        else list.Sort((a, b) => a.GetCookDate().CompareTo(b.GetCookDate()));
+      break;
+      case 2: //creation date
+        Debug.Log("Sort creation date");
+        if (sortState >> 2 == 1) list.Sort((a, b) => b.GetOriginDate().CompareTo(a.GetOriginDate()));
+        else list.Sort((a, b) => a.GetOriginDate().CompareTo(b.GetOriginDate()));
+      break;
     }
   }
 
@@ -90,7 +97,7 @@ public class RecipeListHandler : ListHandler
   {
     foreach (var icon in sortIcons)
     {
-      icon.SetActive(false);
+      if (icon) icon.SetActive(false);
     }
     sortIcons[sortState].SetActive(true);
   }

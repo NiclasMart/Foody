@@ -152,6 +152,7 @@ MonoBehaviour:
   cookColor: {r: 0.056069765, g: 0.6469348, b: 0.7924528, a: 1}
   bakeColor: {r: 1, g: 0.689545, b: 0.2216981, a: 1}
   otherColor: {r: 0.37933785, g: 0.6981132, b: 0, a: 1}
+  markedColor: {r: 1, g: 0.9770992, b: 0.75, a: 1}
   toggle: {fileID: 2714533591309042036}
 --- !u!1 &3555944110831161193
 GameObject:
