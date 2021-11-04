@@ -110,6 +110,7 @@ public class RecipeAdder : MonoBehaviour
     tmpPictureName = "";
     picture.sprite = null;
     dropdown.value = 0;
+    noteIn.ClearField();
   }
 
   IEnumerator ShowingAlert()
