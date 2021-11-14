@@ -33,7 +33,7 @@ public class ShoppingAdder : MonoBehaviour
     ClearSearchList();
 
     string searchInput = input.GetValue().ToLower();
-    if (searchInput.Length < 3) return;
+    if (searchInput.Length < 1) return;
 
     foreach (var item in ListData.instance.purchases)
     {
@@ -53,7 +53,7 @@ public class ShoppingAdder : MonoBehaviour
     listItem.Initialize(item);
   }
 
-  private void ClearSearchList()
+  public void ClearSearchList()
   {
     foreach (Transform item in list)
     {

@@ -15,7 +15,7 @@ public class AddAndroidePicture : PictureAdder
 
   private void Start()
   {
-    camTexture = new WebCamTexture();
+    camTexture = new WebCamTexture(1285, 720);
     liveFeed.texture = camTexture;
   }
 

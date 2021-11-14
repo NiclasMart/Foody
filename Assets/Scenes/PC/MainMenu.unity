@@ -3695,6 +3695,10 @@ PrefabInstance:
       propertyPath: errorAlert
       value: 
       objectReference: {fileID: 357948474}
+    - target: {fileID: 5278857297653561723, guid: 4f97169bcaa652d4f88198717fe08466, type: 3}
+      propertyPath: pictureAdder
+      value: 
+      objectReference: {fileID: 2028297483}
     - target: {fileID: 5278857297653561727, guid: 4f97169bcaa652d4f88198717fe08466, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

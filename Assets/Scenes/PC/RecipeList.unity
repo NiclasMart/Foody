@@ -6302,6 +6302,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Date2
       objectReference: {fileID: 0}
+    - target: {fileID: 5669548841535229488, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669548841535229488, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669548841535229488, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3484539537954172013}
+    - target: {fileID: 5669548841535229488, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669548841535229488, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResetPicture
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669548841535229488, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: RecipeAdder, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669548841535229488, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669548841535229488, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7722039233641273965, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -39.601
@@ -6392,6 +6424,7 @@ MonoBehaviour:
   dropdown: {fileID: 0}
   picture: {fileID: 0}
   errorAlert: {fileID: 0}
+  pictureAdder: {fileID: 3484539537954172009}
 --- !u!114 &3484539537954172014 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 515907028916825615, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}

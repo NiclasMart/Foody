@@ -12,12 +12,12 @@ public class RecipeAdder : MonoBehaviour
   [SerializeField] TagFinder tagFinder;
   [SerializeField] TMP_Dropdown dropdown;
   [SerializeField] Image picture, errorAlert;
+  [SerializeField] PictureAdder pictureAdder;
   string tmpPictureName = "";
 
   private void Awake()
   {
-    PictureAdder adder = GetComponentInChildren<PictureAdder>();
-    if (adder != null) adder.onTakePicture += AddPicture;
+    if (pictureAdder != null) pictureAdder.onTakePicture += AddPicture;
   }
 
   public void AddNewRecipe()
@@ -88,6 +88,21 @@ public class RecipeAdder : MonoBehaviour
     tagsIn.Select();
   }
 
+  public void SavePicture(Recipe recipe)
+  {
+    if (tmpPictureName != "")
+    {
+      SavingSystem.DeletePicture(recipe.picture);
+      recipe.picture = tmpPictureName;
+      tmpPictureName = "";
+    }
+  }
+
+  public void ResetPicture()
+  {
+    AddPicture("");
+  }
+
   public void AddPicture(string name)
   {
     if (tmpPictureName != "") SavingSystem.DeletePicture(tmpPictureName);
@@ -96,7 +111,7 @@ public class RecipeAdder : MonoBehaviour
 
   public void ClearUnusedData()
   {
-    if (tmpPictureName != "") SavingSystem.DeletePicture(tmpPictureName);
+    AddPicture("");
     ClearInputFields();
   }
 
@@ -107,8 +122,8 @@ public class RecipeAdder : MonoBehaviour
     tagsIn.ClearField();
     ingredienceIn.ClearField();
     descriptionIn.ClearField();
-    tmpPictureName = "";
     picture.sprite = null;
+    tmpPictureName = "";
     dropdown.value = 0;
     noteIn.ClearField();
   }

@@ -15,9 +15,8 @@ public class RecipeDisplay : MonoBehaviour
   [SerializeField] TagSearchbar tagSearchbar;
   [SerializeField] TMP_Dropdown dropdown;
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn, noteIn;
-  string tmpPictureName = "";
   ListHandler listHandler;
-  Recipe displayedRecipe;
+  public Recipe displayedRecipe;
 
   private void Awake()
   {
@@ -88,9 +87,6 @@ public class RecipeDisplay : MonoBehaviour
   {
     ToggleEditingMode(false);
     Display(displayedRecipe);
-    //delete picture if one was made
-    if (tmpPictureName != displayedRecipe.picture) SavingSystem.DeletePicture(tmpPictureName);
-    tmpPictureName = "";
     GetComponent<Animator>().SetBool("EditActive", false);
     GetComponent<ScrollRect>().content = showCard;
   }
@@ -105,11 +101,8 @@ public class RecipeDisplay : MonoBehaviour
     displayedRecipe.SetRecipeType(dropdown.captionText.text);
     displayedRecipe.note = noteIn.GetValue();
 
-    if (tmpPictureName != "")
-    {
-      SavingSystem.DeletePicture(displayedRecipe.picture);
-      displayedRecipe.picture = tmpPictureName;
-    }
+    RecipeAdder recipeAdder = FindObjectOfType<RecipeAdder>();
+    if (recipeAdder) recipeAdder.SavePicture(displayedRecipe);
 
     listHandler.ShowCompleteList();
     ListData.instance.SaveRecipeList();
