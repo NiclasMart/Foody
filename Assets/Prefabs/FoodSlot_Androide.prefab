@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.59569
       objectReference: {fileID: 0}
+    - target: {fileID: 1598020546827685609, guid: 9f4aa72e9b9a03744998341fc8297415, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1669278518397662200, guid: 9f4aa72e9b9a03744998341fc8297415, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -49,6 +53,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1669278518397662200, guid: 9f4aa72e9b9a03744998341fc8297415, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518152402275299960, guid: 9f4aa72e9b9a03744998341fc8297415, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3069774178521460550, guid: 9f4aa72e9b9a03744998341fc8297415, type: 3}
@@ -143,6 +151,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.000102996826
       objectReference: {fileID: 0}
+    - target: {fileID: 5668089243076704401, guid: 9f4aa72e9b9a03744998341fc8297415, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7871092891193600805, guid: 9f4aa72e9b9a03744998341fc8297415, type: 3}
       propertyPath: m_SizeDelta.x
       value: 90.2111
@@ -161,11 +173,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8384982000823991905, guid: 9f4aa72e9b9a03744998341fc8297415, type: 3}
       propertyPath: m_Name
-      value: FoodSlot
+      value: FoodSlot_Androide
       objectReference: {fileID: 0}
     - target: {fileID: 8768406946642999599, guid: 9f4aa72e9b9a03744998341fc8297415, type: 3}
       propertyPath: m_fontSize
-      value: 75
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8768406946642999599, guid: 9f4aa72e9b9a03744998341fc8297415, type: 3}
       propertyPath: m_margin.x

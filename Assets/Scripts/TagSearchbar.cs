@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System.Linq;
 
 public class TagSearchbar : MonoBehaviour
 {
@@ -21,13 +23,29 @@ public class TagSearchbar : MonoBehaviour
 
   public void DisplayAllTags()
   {
-    List<string> tags = FindAllTags();
+    List<string> tags;
+    tags = (listHandler != null) ? FindAllTagsInListHandler() : FindAllAvailableTags();
+    tags.Sort();
 
     foreach (var tag in tags)
     {
       TagCard card = Instantiate(tagCard, contentTransform);
       card.Initialize(tag);
     }
+  }
+
+  private List<string> FindAllAvailableTags()
+  {
+    List<string> tags = new List<string>();
+    foreach (var recipe in ListData.instance.recipes)
+    {
+      foreach (var tag in recipe.tags)
+      {
+        if (tags.Contains(tag)) continue;
+        tags.Add(tag);
+      }
+    }
+    return tags;
   }
 
   public void FillTagsInSearchbar()
@@ -40,7 +58,7 @@ public class TagSearchbar : MonoBehaviour
     searchbar.Fill(searchTerm);
   }
 
-  public List<string> FindAllTags()
+  public List<string> FindAllTagsInListHandler()
   {
     List<string> uniqueTags = new List<string>();
     foreach (var recipe in listHandler.displayedList)
@@ -61,6 +79,34 @@ public class TagSearchbar : MonoBehaviour
       if (child == contentTransform) continue;
       Destroy(child.gameObject);
     }
+  }
+
+  public void FindTagsInInputField(TMP_InputField field)
+  {
+    List<string> tagsInField = RecipeAdder.StringToList(field.text);
+    List<TagCard> cards = contentTransform.GetComponentsInChildren<TagCard>().ToList();
+    foreach (var card in cards)
+    {
+      card.ToggleSelect(tagsInField.Contains(card.GetTag()));
+    }
+  }
+
+  public void FillTagsInInputField(TMP_InputField field)
+  {
+    string newTagTerm = "";
+    List<string> existingTags = new List<string>();
+    foreach (var tagSlot in contentTransform.GetComponentsInChildren<TagCard>())
+    {
+      if (tagSlot.IsSelected()) newTagTerm = newTagTerm + tagSlot.GetTag() + ", ";
+      existingTags.Add(tagSlot.GetTag());
+    }
+
+    foreach (var tag in RecipeAdder.StringToList(field.text))
+    {
+      if (newTagTerm.Contains(tag) || existingTags.Contains(tag)) continue;
+      newTagTerm = newTagTerm + tag + ", ";
+    }
+    field.text = newTagTerm;
   }
 
   public void RefreshTagList()

@@ -9,7 +9,6 @@ using System;
 public class RecipeAdder : MonoBehaviour
 {
   [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn, noteIn;
-  [SerializeField] TagFinder tagFinder;
   [SerializeField] TMP_Dropdown dropdown;
   [SerializeField] Image picture, errorAlert;
   [SerializeField] PictureAdder pictureAdder;
@@ -52,25 +51,6 @@ public class RecipeAdder : MonoBehaviour
     List<string> tagList = stringValue.Split(',').ToList();
     tagList.Remove("");
     return tagList;
-  }
-
-  public void SearchAndDisplayTags()
-  {
-    tagFinder.ClearList();
-    List<string> tagList = StringToList(tagsIn.GetValue());
-    string currentTag = tagList.Count > 0 ? tagList[tagList.Count - 1] : "";
-
-    if (currentTag.Length < 3) return;
-
-    List<string> matchingTags = new List<string>();
-    foreach (var recipe in ListData.instance.recipes)
-    {
-      foreach (string tag in recipe.tags)
-      {
-        if (tag.StartsWith(currentTag) && !matchingTags.Contains(tag)) matchingTags.Add(tag);
-      }
-    }
-    tagFinder.DisplayTags(matchingTags);
   }
 
   public void FillInTag(string newTag)
