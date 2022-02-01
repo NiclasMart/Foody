@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class RecipeListHandler : ListHandler
 {
+  [SerializeField] TextMeshProUGUI amountDisplay;
   [SerializeField] List<GameObject> sortIcons;
   [SerializeField] GameObject exportBtn;
   Searchbar searchbar;
@@ -24,6 +26,7 @@ public class RecipeListHandler : ListHandler
     exportModeActive = true;
     ToggleExportMode();
 
+    amountDisplay.SetText(list.Count.ToString());
     SortList(list);
     base.ShowList(list);
   }
