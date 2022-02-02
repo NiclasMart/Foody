@@ -8122,6 +8122,18 @@ MonoBehaviour:
   ingredienceIn: {fileID: 0}
   descriptionIn: {fileID: 0}
   noteIn: {fileID: 0}
+  displayedRecipe:
+    name: 
+    picture: 
+    type: 0
+    link: 
+    description: 
+    ingredients: 
+    tags: []
+    date: 
+    creationDate: 
+    note: 
+    marked: 0
 --- !u!1 &3993289861356600762
 GameObject:
   m_ObjectHideFlags: 0
@@ -8686,7 +8698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6652070339536456524, guid: b902c288cdc79944298d988877a21990, type: 3}
       propertyPath: m_Spacing
-      value: 8.21
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6652070339536456526, guid: b902c288cdc79944298d988877a21990, type: 3}
       propertyPath: m_SizeDelta.y

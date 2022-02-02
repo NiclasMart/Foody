@@ -6387,6 +6387,10 @@ PrefabInstance:
       value: UnityEngine.UI.Image, UnityEngine.UI
       objectReference: {fileID: 0}
     - target: {fileID: 3484539536089527929, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
+      propertyPath: m_Spacing
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484539536089527929, guid: 77ea9fe137bc33543830e92f944c57ae, type: 3}
       propertyPath: m_ChildForceExpandHeight
       value: 0
       objectReference: {fileID: 0}
