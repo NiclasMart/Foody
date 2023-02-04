@@ -74,8 +74,8 @@ public class ListData : MonoBehaviour
         Debug.Log("Call Synchronize");
         FirebaseInit firebase = GetComponent<FirebaseInit>();
         StartCoroutine(LoadRecipeList(firebase));
-        //LoadFoodList();
-        //LoadShoppingList();
+        StartCoroutine(LoadFoodList(firebase));
+        StartCoroutine(LoadShoppingList(firebase));
     }
 
     public void SaveRecipeList()
@@ -122,14 +122,28 @@ public class ListData : MonoBehaviour
         //TODO: upload new food list
     }
 
-    public void LoadFoodList()
+    public IEnumerator LoadFoodList(FirebaseInit firebase)
     {
+        //get recipe list of file storage
         ListFileData data = (ListFileData)SavingSystem.Load("FoodList");
-        foods = (List<string>)data?.listData;
-        // foods = (List<Recipe>)SavingSystem.Load("FoodList");
-        if (foods == null) foods = new List<string>();
 
-        //TODO: implement firebase
+        if (data == null)
+        {
+            string path = Path.Combine(SavingSystem.DataPath, "FoodList.eat");
+            yield return firebase.DownloadFileCoroutine(path, "FoodList.eat");
+
+            //get data from downloaded file and if empty, return
+            data = (ListFileData)SavingSystem.Load("FoodList");
+            if (data == null)
+            {
+                foods = new List<string>();
+                yield break;
+            }
+        }
+        foods = (List<string>)data.listData;
+        string localFileLastUpdated = data.date;
+
+        yield return firebase.SynchroniseList("FoodList.eat", localFileLastUpdated);
     }
 
     public void SaveShoppingList()
@@ -142,14 +156,28 @@ public class ListData : MonoBehaviour
         //TODO: implement firebase
     }
 
-    public void LoadShoppingList()
+    public IEnumerator LoadShoppingList(FirebaseInit firebase)
     {
+        //get recipe list of file storage
         ListFileData data = (ListFileData)SavingSystem.Load("ShoppingList");
-        purchases = (Dictionary<string, int>)data?.listData;
-        // purchases = (Dictionary<string, int>)SavingSystem.Load("ShoppingList");
-        if (purchases == null) purchases = new Dictionary<string, int>();
 
-        //TODO: implement firebase
+        if (data == null)
+        {
+            string path = Path.Combine(SavingSystem.DataPath, "ShoppingList.eat");
+            yield return firebase.DownloadFileCoroutine(path, "ShoppingList.eat");
+
+            //get data from downloaded file and if empty, return
+            data = (ListFileData)SavingSystem.Load("ShoppingList");
+            if (data == null)
+            {
+                purchases = new Dictionary<string, int>();
+                yield break;
+            }
+        }
+        purchases = (Dictionary<string, int>)data.listData;
+        string localFileLastUpdated = data.date;
+
+        yield return firebase.SynchroniseList("ShoppingList.eat", localFileLastUpdated);
     }
 
     public void AddNewItemToShoppingCard(string name, int amount)
