@@ -6,7 +6,7 @@ using TMPro;
 public class FoodListHandler : ListHandler
 {
   [SerializeField] InputFunctionality foodIn;
-  List<Recipe> displayedList;
+  List<string> displayedList;
 
   private void Awake()
   {
@@ -22,7 +22,7 @@ public class FoodListHandler : ListHandler
   {
     if (Input.GetKeyDown(KeyCode.Escape)) return;
 
-    ListData.instance.foods.Add(new Recipe(foodIn.GetValue()));
+    ListData.instance.foods.Add(foodIn.GetValue());
     ListData.instance.SaveFoodList();
 
     foodIn.ClearField();
@@ -31,13 +31,13 @@ public class FoodListHandler : ListHandler
 
   public void DeleteFoodFromList(Recipe food)
   {
-    ListData.instance.foods.Remove(food);
+    ListData.instance.foods.Remove(food.name);
     ListData.instance.SaveFoodList();
     ShowCompleteList();
   }
 
   protected override void CacheDisplayedList(object list)
   {
-    displayedList = (List<Recipe>)list;
+    displayedList = (List<string>)list;
   }
 }

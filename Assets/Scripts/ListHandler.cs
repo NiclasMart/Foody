@@ -29,6 +29,21 @@ public class ListHandler : MonoBehaviour
 
   }
 
+    public virtual void ShowList(List<string> list)
+    {
+        DeleteList();
+
+        foreach (var recipeName in list)
+        {
+            Recipe recipe = ListData.instance.GetRecipe(recipeName);
+            RecipeSlot slot = Instantiate(recipeSlot, listTransform);
+
+            if (recipe == null) recipe = new Recipe(recipeName);
+            slot.Initialize(recipe);
+        }
+        CacheDisplayedList(list);
+    }
+
   protected void DeleteList()
   {
     foreach (Transform item in listTransform.transform)

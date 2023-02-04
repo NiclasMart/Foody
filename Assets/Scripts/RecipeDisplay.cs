@@ -49,7 +49,7 @@ public class RecipeDisplay : MonoBehaviour
     pictureField.sprite = SavingSystem.LoadImageFromFile(recipe.picture);
     pictureField.transform.parent.gameObject.SetActive(pictureField.sprite != null);
 
-    SetButtonColor(foodListButton, ListData.instance.foods.Find(x => x.name == recipe.name) != null);
+    SetButtonColor(foodListButton, ListData.instance.foods.Find(x => x == recipe.name) != null);
     SetButtonColor(markerButton, recipe.marked);
     displayedRecipe = recipe;
   }
@@ -127,14 +127,14 @@ public class RecipeDisplay : MonoBehaviour
 
   public void AddRecipeToFoodList(Image btn)
   {
-    if (ListData.instance.foods.Find(x => x.name == displayedRecipe.name) != null)
+    if (ListData.instance.foods.Find(x => x == displayedRecipe.name) != null)
     {
-      ListData.instance.foods.RemoveAll(x => x.name == displayedRecipe.name);
+      ListData.instance.foods.RemoveAll(x => x == displayedRecipe.name);
       SetButtonColor(btn, false);
     }
     else
     {
-      ListData.instance.foods.Add(displayedRecipe);
+      ListData.instance.foods.Add(displayedRecipe.name);
       SetButtonColor(btn, true);
     }
     ListData.instance.SaveFoodList();

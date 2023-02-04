@@ -7,7 +7,7 @@ using UnityEngine;
 public class ListData : MonoBehaviour
 {
     public List<Recipe> recipes = new List<Recipe>();
-    public List<Recipe> foods = new List<Recipe>();
+    public List<string> foods = new List<string>();
     public Dictionary<string, int> purchases = new Dictionary<string, int>();
     public static ListData instance = null;
 
@@ -49,6 +49,11 @@ public class ListData : MonoBehaviour
     public void SetRecipes(List<Recipe> list)
     {
         recipes = list;
+    }
+
+    public Recipe GetRecipe(string name)
+    {
+        return recipes.Find(x => x.name == name);        
     }
 
     public void InitializeAllLists()
@@ -120,9 +125,9 @@ public class ListData : MonoBehaviour
     public void LoadFoodList()
     {
         ListFileData data = (ListFileData)SavingSystem.Load("FoodList");
-        foods = (List<Recipe>)data?.listData;
+        foods = (List<string>)data?.listData;
         // foods = (List<Recipe>)SavingSystem.Load("FoodList");
-        if (foods == null) foods = new List<Recipe>();
+        if (foods == null) foods = new List<string>();
 
         //TODO: implement firebase
     }
