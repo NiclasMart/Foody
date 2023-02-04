@@ -8,7 +8,7 @@ using System;
 
 public class RecipeAdder : MonoBehaviour
 {
-  [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn, noteIn;
+  [SerializeField] InputFunctionality nameIn, linkIn, bookRefIn, tagsIn, ingredienceIn, descriptionIn, noteIn;
   [SerializeField] TMP_Dropdown dropdown;
   [SerializeField] Image picture, errorAlert;
   [SerializeField] PictureAdder pictureAdder;

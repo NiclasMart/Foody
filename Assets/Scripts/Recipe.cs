@@ -25,6 +25,10 @@ public class Recipe : IComparable<Recipe>
   public string note;
   public bool marked;
 
+  //Information for storage on firebase
+  public string lastUpdated;
+
+
   public Recipe(string name)
   {
     this.name = name;
@@ -35,6 +39,8 @@ public class Recipe : IComparable<Recipe>
     creationDate = DateTime.Now.Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"));
     note = "";
     marked = false;
+
+    lastUpdated = creationDate;
   }
 
   public int CompareTo(Recipe other)
@@ -53,6 +59,13 @@ public class Recipe : IComparable<Recipe>
   {
     DateTime returnDate;
     if (!DateTime.TryParse(this.creationDate, out returnDate)) returnDate = DateTime.MinValue;
+    return returnDate;
+  }
+
+  public DateTime GetLastUpdateDate()
+  {
+    DateTime returnDate;
+    if (!DateTime.TryParse(this.lastUpdated, out returnDate)) returnDate = DateTime.MinValue;
     return returnDate;
   }
 

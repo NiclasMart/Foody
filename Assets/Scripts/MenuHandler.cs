@@ -9,9 +9,10 @@ public class MenuHandler : MonoBehaviour
   private void Start()
   {
     animator = GetComponent<Animator>();
-    ListData.instance.LoadRecipeList();
-    ListData.instance.LoadFoodList();
-    ListData.instance.LoadShoppingList();
+    // ListData.instance.LoadRecipeList();
+    // ListData.instance.LoadFoodList();
+    // ListData.instance.LoadShoppingList();
+    ListData.instance.InitializeAllLists();
 
     pathDisplay.text = Application.persistentDataPath;
   }

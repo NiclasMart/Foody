@@ -10,11 +10,11 @@ public class RecipeDisplay : MonoBehaviour
 {
   [SerializeField] RectTransform showCard, editCard;
   [SerializeField] ShoppingAdder shoppingAdder;
-  [SerializeField] TextMeshProUGUI nameField, linkField, dateField, date2Field, tagHeader, tagsField, ingredienceField, descriptionHeader, descriptionField, noteHeader, noteField;
+  [SerializeField] TextMeshProUGUI nameField, linkField, bookRefField, dateField, date2Field, tagHeader, tagsField, ingredienceField, descriptionHeader, descriptionField, noteHeader, noteField;
   [SerializeField] Image pictureField, pictureIn, foodListButton, markerButton;
   [SerializeField] TagSearchbar tagSearchbar;
   [SerializeField] TMP_Dropdown dropdown;
-  [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn, noteIn;
+  [SerializeField] InputFunctionality nameIn, linkIn, bookRefIn, tagsIn, ingredienceIn, descriptionIn, noteIn;
   ListHandler listHandler;
   public Recipe displayedRecipe;
 

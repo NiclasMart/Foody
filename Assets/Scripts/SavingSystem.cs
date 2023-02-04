@@ -7,6 +7,8 @@ using UnityEngine;
 public static class SavingSystem
 {
   public static string DataPath => Path.Combine(Application.persistentDataPath, "Data");
+
+  public static FirebaseInit firebase;
   public static void Save(object data, string saveFile)
   {
     SaveFile(GetPathFromSaveFile(saveFile), data);
@@ -24,6 +26,7 @@ public static class SavingSystem
     File.Delete(path);
   }
 
+    //TODO: remove
   public static void ExportData(List<Recipe> list, string fileName)
   {
     string path = Path.Combine(Application.persistentDataPath, "ExportData");
@@ -46,6 +49,7 @@ public static class SavingSystem
     
   }
 
+   //TODO: remove 
   public static List<Recipe> ImportData(string fileName)
   {
     string path = Path.Combine(Application.persistentDataPath, "ExportData");
@@ -122,5 +126,9 @@ public static class SavingSystem
       return formatter.Deserialize(stream);
     }
   }
+
+  //-----------------Firebase-------------
+
+  
 }
 

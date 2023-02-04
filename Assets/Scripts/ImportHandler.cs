@@ -16,14 +16,15 @@ public class ImportHandler : MonoBehaviour
       return Directory.Exists(path);
     }
 
+    //TODO: remove
     public void Import()
     {
-      List<Recipe> newRecipes = SavingSystem.ImportData("ExportRecipeList");
+    //   List<Recipe> newRecipes = SavingSystem.ImportData("ExportRecipeList");
 
-      foreach (var recipe in newRecipes)
-      {
-        ListData.instance.AddRecipe(recipe);
-      }
-      gameObject.SetActive(false);
+    //   foreach (var recipe in newRecipes)
+    //   {
+    //     ListData.instance.AddRecipe(recipe);
+    //   }
+    //   gameObject.SetActive(false);
     }
 }
