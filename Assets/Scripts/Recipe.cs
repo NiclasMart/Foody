@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public enum RecipeType
@@ -20,6 +21,9 @@ public class Recipe : IComparable<Recipe>
   public string ingredients;
   public List<string> tags = new List<string>();
   public string date = "---";
+  public string creationDate = "---";
+  public string note;
+  public bool marked;
 
   public Recipe(string name)
   {
@@ -28,6 +32,9 @@ public class Recipe : IComparable<Recipe>
     link = "";
     description = "";
     ingredients = "";
+    creationDate = DateTime.Now.Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"));
+    note = "";
+    marked = false;
   }
 
   public int CompareTo(Recipe other)
@@ -35,10 +42,17 @@ public class Recipe : IComparable<Recipe>
     return this.name.CompareTo(other.name);
   }
 
-  public DateTime GetDate()
+  public DateTime GetCookDate()
   {
     DateTime returnDate;
     if (!DateTime.TryParse(this.date, out returnDate)) returnDate = DateTime.MinValue;
+    return returnDate;
+  }
+
+  public DateTime GetOriginDate()
+  {
+    DateTime returnDate;
+    if (!DateTime.TryParse(this.creationDate, out returnDate)) returnDate = DateTime.MinValue;
     return returnDate;
   }
 
@@ -56,6 +70,17 @@ public class Recipe : IComparable<Recipe>
         this.type = RecipeType.Sonstiges;
         break;
     }
+  }
+
+  public string GetTagsAsString()
+  {
+    string tagString = "";
+    foreach (var tag in tags)
+    {
+      tagString += (tag + ", ");
+    }
+    if (tagString != "") tagString = tagString.Remove(tagString.Length - 2, 2);
+    return tagString;
   }
 
   public Sprite GetImage()

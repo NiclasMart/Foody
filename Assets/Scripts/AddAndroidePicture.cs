@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AddAndroidePicture : MonoBehaviour
+public class AddAndroidePicture : PictureAdder
 {
   [SerializeField] GameObject picturePanel;
   [SerializeField] RawImage liveFeed;
@@ -13,11 +13,9 @@ public class AddAndroidePicture : MonoBehaviour
 
   bool isLive = false;
 
-  public Action<string> onTakePicture;
-
   private void Start()
   {
-    camTexture = new WebCamTexture();
+    camTexture = new WebCamTexture(1285, 720);
     liveFeed.texture = camTexture;
   }
 

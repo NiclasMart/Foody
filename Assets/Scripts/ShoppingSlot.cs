@@ -16,13 +16,33 @@ public class ShoppingSlot : MonoBehaviour
   public void AddItemToCard()
   {
     ListData.instance.purchases[itemName] += 1;
+    UpdateData();
+  }
+
+  public void RemoveItemFromCard()
+  {
+    ListData.instance.purchases[itemName] -= 1;
+    if (ListData.instance.purchases[itemName] <= 0)
+    {
+      ListData.instance.purchases.Remove(itemName);
+      ListData.instance.SaveShoppingList();
+      ShoppingListHandler listHandler = FindObjectOfType<ShoppingListHandler>();
+      if (listHandler) listHandler.ShowCompleteList();
+      Destroy(gameObject);
+      return;
+    }
+
+    UpdateData();
+  }
+
+  private void UpdateData()
+  {
     ShowText();
 
     ShoppingListHandler listHandler = FindObjectOfType<ShoppingListHandler>();
     if (listHandler) listHandler.ShowCompleteList();
 
     ListData.instance.SaveShoppingList();
-
   }
 
   public void RemoveSlot()

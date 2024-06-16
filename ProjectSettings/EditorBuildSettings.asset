@@ -5,19 +5,34 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+  - enabled: 0
+    path: Assets/Scenes/Androide/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/RecipeList.unity
+  - enabled: 0
+    path: Assets/Scenes/Androide/RecipeList.unity
     guid: 6f7c1cb231e9a72499e28abd144e5f16
-  - enabled: 1
-    path: Assets/Scenes/FoodList.unity
+  - enabled: 0
+    path: Assets/Scenes/Androide/FoodList.unity
     guid: 94352f29828d0154d8df0e96bcfe756c
-  - enabled: 1
-    path: Assets/Scenes/ShoppingList.unity
+  - enabled: 0
+    path: Assets/Scenes/Androide/ShoppingList.unity
     guid: 090f12cff92419c4a9749f5ec54cd376
-  - enabled: 1
-    path: Assets/Scenes/RecipeLottery.unity
+  - enabled: 0
+    path: Assets/Scenes/Androide/RecipeLottery.unity
     guid: b64cb40561f10d948b6ef33503512b4c
+  - enabled: 1
+    path: Assets/Scenes/PC/MainMenu.unity
+    guid: 4348e9b0111c4594694eb1251c8b8115
+  - enabled: 1
+    path: Assets/Scenes/PC/FoodList.unity
+    guid: 255840c2301822048ae033784dc5dc71
+  - enabled: 1
+    path: Assets/Scenes/PC/RecipeList.unity
+    guid: 241b04fb70dab1b4ca0d00d902c1ab62
+  - enabled: 1
+    path: Assets/Scenes/PC/RecipeLottery.unity
+    guid: 773e0e91de2a4b841931a27fb73308d0
+  - enabled: 1
+    path: Assets/Scenes/PC/ShoppingList.unity
+    guid: 419decd5cab8fab40a98570ccd48941e
   m_configObjects: {}

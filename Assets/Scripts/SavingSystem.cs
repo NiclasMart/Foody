@@ -7,15 +7,14 @@ using UnityEngine;
 public static class SavingSystem
 {
   public static string DataPath => Path.Combine(Application.persistentDataPath, "Data");
-
   public static void Save(object data, string saveFile)
   {
-    SaveFile(saveFile, data);
+    SaveFile(GetPathFromSaveFile(saveFile), data);
   }
 
   public static object Load(string saveFile)
   {
-    return LoadFile(saveFile);
+    return LoadFile(GetPathFromSaveFile(saveFile));
   }
 
   public static void DeletePicture(string name)
@@ -23,6 +22,57 @@ public static class SavingSystem
     if (name == "") return;
     string path = Path.Combine(DataPath, name);
     File.Delete(path);
+  }
+
+  public static void ExportData(List<Recipe> list, string fileName)
+  {
+    string path = Path.Combine(Application.persistentDataPath, "ExportData");
+    if (Directory.Exists(path)) Directory.Delete(path, true);
+    
+    Directory.CreateDirectory(path);
+
+    foreach (var recipe in list)
+    {
+      if (recipe.picture != "")
+      {
+        string imagePath = Path.Combine(DataPath, recipe.picture);
+        string copyPath = Path.Combine(path, recipe.picture);
+        File.Copy(imagePath, copyPath);
+      }
+    }
+
+    string exportDataPath = Path.Combine(path, fileName + ".eat");
+    SaveFile(exportDataPath, list);
+    
+  }
+
+  public static List<Recipe> ImportData(string fileName)
+  {
+    string path = Path.Combine(Application.persistentDataPath, "ExportData");
+    string importDataPath = Path.Combine(path, fileName + ".eat");
+    List<Recipe> importData = (List<Recipe>)LoadFile(importDataPath);
+
+    int nameCounter = 0;
+    foreach (var recipe in importData)
+    {
+      //change name
+      recipe.name = recipe.name + " (neu)";
+      if (ListData.instance.recipes.Find(x => x.name == recipe.name) != null) recipe.name =recipe.name + " -d"; 
+
+      //copy image
+      if (recipe.picture != "")
+      {
+        string imagePath = Path.Combine(path, recipe.picture);
+        string newImageName = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + nameCounter.ToString() + ".png";
+        string newImagePath = Path.Combine(DataPath, newImageName);
+        File.Copy(imagePath, newImagePath);
+        recipe.picture = newImageName;
+      }
+      nameCounter++;
+    }
+    
+    Directory.Delete(path, true);
+    return importData;
   }
 
   public static Sprite LoadImageFromFile(string fileName)
@@ -48,9 +98,8 @@ public static class SavingSystem
     return Path.Combine(DataPath, saveFile + ".eat");
   }
 
-  private static void SaveFile(string saveFile, object data)
+  private static void SaveFile(string path, object data)
   {
-    string path = GetPathFromSaveFile(saveFile);
     Debug.Log("Saving to " + path);
 
     using (FileStream stream = File.Open(path, FileMode.Create))
@@ -60,9 +109,8 @@ public static class SavingSystem
     }
   }
 
-  private static object LoadFile(string saveFile)
+  private static object LoadFile(string path)
   {
-    string path = GetPathFromSaveFile(saveFile);
     Debug.Log("Loading from " + path);
     if (!File.Exists(path))
     {

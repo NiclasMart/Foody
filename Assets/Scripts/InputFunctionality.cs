@@ -38,5 +38,6 @@ public class InputFunctionality : MonoBehaviour
   public void Select()
   {
     fieldIn.ActivateInputField();
+    fieldIn.Select();
   }
 }

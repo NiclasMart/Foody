@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 public class ShoppingAdder : MonoBehaviour
 {
@@ -22,7 +23,15 @@ public class ShoppingAdder : MonoBehaviour
     string newItem = input.GetValue().ToLower();
     if (newItem == "" || newItem == " ") return;
 
-    ListData.instance.AddNewItemToShoppingCard(newItem);
+    string potentialAmount = newItem.Split().Last();
+    int amount;
+    if (int.TryParse(potentialAmount, System.Globalization.NumberStyles.None, null, out amount))
+    {
+      newItem = Regex.Replace(newItem, "[0-9]", "");
+    }
+    else amount = 1;
+
+    ListData.instance.AddNewItemToShoppingCard(newItem, amount);
     ListData.instance.SaveShoppingList();
 
     ClearInput();
@@ -53,7 +62,7 @@ public class ShoppingAdder : MonoBehaviour
     listItem.Initialize(item);
   }
 
-  private void ClearSearchList()
+  public void ClearSearchList()
   {
     foreach (Transform item in list)
     {

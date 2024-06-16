@@ -10,6 +10,7 @@ public class LotterySlot : RecipeSlot
 
   public override void Initialize(Recipe recipe)
   {
+
     if (recipe == null)
     {
       gameObject.SetActive(false);

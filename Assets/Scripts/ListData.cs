@@ -69,12 +69,12 @@ public class ListData : MonoBehaviour
     if (purchases == null) purchases = new Dictionary<string, int>();
   }
 
-  public void AddNewItemToShoppingCard(string name)
+  public void AddNewItemToShoppingCard(string name, int amount)
   {
     if (purchases.ContainsKey(name))
-      ListData.instance.purchases[name] += 1;
+      ListData.instance.purchases[name] += amount;
     else
-      purchases.Add(name, 1);
+      purchases.Add(name, amount);
   }
 
 

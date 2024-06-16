@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using System.Linq;
 using UnityEngine;
 
 public class ShoppingListHandler : ListHandler
@@ -22,7 +23,7 @@ public class ShoppingListHandler : ListHandler
   {
     base.DeleteList();
 
-    foreach (var item in list)
+    foreach (KeyValuePair<string, int> item in list.OrderBy(key => key.Key))
     {
       ShoppingSlot slot = Instantiate(shoppingSlot, listTransform);
       slot.Initialize(item);

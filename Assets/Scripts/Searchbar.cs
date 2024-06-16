@@ -5,7 +5,7 @@ using TMPro;
 
 public class Searchbar : MonoBehaviour
 {
-  [SerializeField] TMP_Dropdown dropdown;
+  [SerializeField] public TMP_Dropdown dropdown;
   TMP_InputField input;
 
 
@@ -22,7 +22,7 @@ public class Searchbar : MonoBehaviour
 
     //handle search input
     List<Recipe> showList = new List<Recipe>();
-    string searchString = input.text;
+    string searchString = input.text.ToLower();
     if (searchString.Contains("#"))
     {
       string[] searchTerms = searchString.Split('#');
@@ -30,16 +30,25 @@ public class Searchbar : MonoBehaviour
       foreach (var term in searchTerms)
       {
         if (term == "") continue;
-        string lowCaseTerm = term.ToLower();
-        string[] words = lowCaseTerm.Split(' ');
+        string[] words = term.Split(' ');
         if (words[0] == "tag") showList = SearchTag(words, showList);
         else if (words[0] == "zutat") showList = SearchIngredience(words, showList);
         else SearchName(searchString, showList);
       }
     }
-    else SearchName(searchString, showList);
+    else
+    {
+      showList = FilterRecipeType();
+      showList = SearchName(searchString, showList);
+    }
 
     return showList;
+  }
+
+  public void Fill(string term)
+  {
+    input.text = term;
+    ShowSearchResult();
   }
 
   public List<Recipe> FilterRecipeType()
@@ -49,7 +58,8 @@ public class Searchbar : MonoBehaviour
     List<Recipe> showList = new List<Recipe>();
     foreach (var recipe in ListData.instance.recipes)
     {
-      if (recipe.type.ToString() == dropdown.captionText.text) showList.Add(recipe);
+      if (dropdown.captionText.text == "Markiert" && recipe.marked
+        || recipe.type.ToString() == dropdown.captionText.text) showList.Add(recipe);
     }
     return showList;
   }
@@ -70,7 +80,7 @@ public class Searchbar : MonoBehaviour
       for (int i = 1; i < ingredients.Length; i++)
       {
         if (ingredients[i] == "") continue;
-        if (!recipe.ingredients.Contains(ingredients[i]))
+        if (!recipe.ingredients.ToLower().Contains(ingredients[i]))
         {
           containsIngredients = false;
           break;
@@ -81,12 +91,14 @@ public class Searchbar : MonoBehaviour
     return newShowList;
   }
 
-  private void SearchName(string searchString, List<Recipe> showList)
+  private List<Recipe> SearchName(string searchString, List<Recipe> showList)
   {
-    foreach (var recipe in ListData.instance.recipes)
+    List<Recipe> newShowList = new List<Recipe>();
+    foreach (var recipe in showList)
     {
-      if (recipe.name.Contains(searchString)) showList.Add(recipe);
+      if (recipe.name.ToLower().Contains(searchString)) newShowList.Add(recipe);
     }
+    return newShowList;
   }
 
   private List<Recipe> SearchTag(string[] tags, List<Recipe> showList)

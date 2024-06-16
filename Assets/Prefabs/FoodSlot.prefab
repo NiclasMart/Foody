@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 577, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 617.8, y: -0.0000014305}
+  m_SizeDelta: {x: 33.6705, y: 33.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7653010239180660855
 CanvasRenderer:
@@ -109,10 +109,10 @@ RectTransform:
   m_Father: {fileID: 7871092891193600805}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2535619553465316313
 CanvasRenderer:
@@ -187,8 +187,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.23079967, y: 0.0001001358}
+  m_SizeDelta: {x: 13.3784, y: 11.0719}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3493531444623406126
 CanvasRenderer:
@@ -319,8 +319,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000047683716, y: 0.00000047683716}
-  m_SizeDelta: {x: 90.3013, y: 90.3013}
+  m_AnchoredPosition: {x: 0, y: 0.00000047683716}
+  m_SizeDelta: {x: 29.741001, y: 29.741001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8863207716597283422
 CanvasRenderer:
@@ -370,6 +370,10 @@ PrefabInstance:
     - target: {fileID: 2299650951036325883, guid: a50dbd062fb50d24eb4ece6b614864ed, type: 3}
       propertyPath: m_Name
       value: FoodSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746167576605227810, guid: a50dbd062fb50d24eb4ece6b614864ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4696541612261547740, guid: a50dbd062fb50d24eb4ece6b614864ed, type: 3}
       propertyPath: m_Pivot.x
@@ -454,6 +458,10 @@ PrefabInstance:
     - target: {fileID: 4696541612261547740, guid: a50dbd062fb50d24eb4ece6b614864ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979341034870325858, guid: a50dbd062fb50d24eb4ece6b614864ed, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a50dbd062fb50d24eb4ece6b614864ed, type: 3}
