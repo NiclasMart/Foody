@@ -56,6 +56,16 @@ public class RecipeDisplay : MonoBehaviour
         displayedRecipe = recipe;
     }
 
+    public void OpenLinkedRecipe(string recipeID)
+    {
+        Recipe linkedRecipe = ListData.instance.recipes.Find(x => x.ID == recipeID);
+        if (linkedRecipe != null)
+        {
+            linkpath.Add(displayedRecipe.ID);
+            Display(linkedRecipe);
+        }
+    }
+
     public void Delete()
     {
         SavingSystem.DeletePicture(displayedRecipe.picture);
@@ -152,7 +162,14 @@ public class RecipeDisplay : MonoBehaviour
     //jumps to the last displayed recipe from linkpath or back to overview
     public void JumpBackInLinkpath()
     {
-        if (linkpath.Count == 0)
+        if (linkpath.Count != 0)
+        {
+            string lastID = linkpath[linkpath.Count - 1];
+            linkpath.RemoveAt(linkpath.Count - 1);
+            Recipe linkedRecipe = ListData.instance.recipes.Find(x => x.ID == lastID);
+            Display(linkedRecipe);
+        }
+        else
         {
             ToggleRecipeDisplay(false);
             listHandler.ShowCompleteList();
@@ -195,7 +212,7 @@ public class RecipeDisplay : MonoBehaviour
         dropdown.value = (int)displayedRecipe.type;
     }
 
-    public static string RichTextAdder(string text)
+    private static string RichTextAdder(string text)
     {
         string patternRegex = @"#link=([-a-zA-Z0-9]+)#";
 
@@ -206,7 +223,7 @@ public class RecipeDisplay : MonoBehaviour
             Recipe matchingRecipe = ListData.instance.recipes.Find(x => x.ID == recipeID);
             if (matchingRecipe != null)
             {
-                return $"<link={recipeID}><color=green><u>{matchingRecipe.name}</u></color></link>";
+                return $"<link=\"{recipeID}\"><color=green><u>{matchingRecipe.name}</u></color></link>";
             }
             else
             {
