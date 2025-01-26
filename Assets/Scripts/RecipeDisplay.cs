@@ -158,6 +158,11 @@ public class RecipeDisplay : MonoBehaviour
         }
     }
 
+    public void CopyIDToClipboard()
+    {
+        if (displayedRecipe.ID != null) GUIUtility.systemCopyBuffer = displayedRecipe.ID;
+    }
+
     private void SetButtonColor(Image btn, bool active)
     {
         if (!btn) return;
