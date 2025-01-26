@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,13 +37,13 @@ public class RecipeDisplay : MonoBehaviour
         tagHeader.gameObject.SetActive(tags != "");
         tagsField.text = tags;
 
-        ingredienceField.text = recipe.ingredients;
+        ingredienceField.text = RichTextAdder(recipe.ingredients);
 
         descriptionHeader.gameObject.SetActive(recipe.description != "");
-        descriptionField.text = recipe.description;
+        descriptionField.text = RichTextAdder(recipe.description);
 
         noteHeader.gameObject.SetActive(recipe.note != "");
-        noteField.text = recipe.note;
+        noteField.text = RichTextAdder(recipe.note);
 
         dateField.text = "Zuletzt gekocht am: " + recipe.date;
         date2Field.text = "Hinzugefügt am: " + recipe.creationDate;
@@ -97,10 +98,10 @@ public class RecipeDisplay : MonoBehaviour
         displayedRecipe.name = nameIn.GetValue();
         displayedRecipe.link = linkIn.GetValue();
         displayedRecipe.tags = RecipeAdder.StringToList(tagsIn.GetValue());
-        displayedRecipe.description = RecipeAdder.RichTextAdder(descriptionIn.GetValue());
-        displayedRecipe.ingredients = RecipeAdder.RichTextAdder(ingredienceIn.GetValue());
+        displayedRecipe.description = descriptionIn.GetValue();
+        displayedRecipe.ingredients = ingredienceIn.GetValue();
         displayedRecipe.SetRecipeType(dropdown.captionText.text);
-        displayedRecipe.note = RecipeAdder.RichTextAdder(noteIn.GetValue());
+        displayedRecipe.note = noteIn.GetValue();
 
         RecipeAdder recipeAdder = FindObjectOfType<RecipeAdder>();
         if (recipeAdder) recipeAdder.SavePicture(displayedRecipe);
@@ -192,6 +193,27 @@ public class RecipeDisplay : MonoBehaviour
         noteIn.SetValue(displayedRecipe.note);
         pictureIn.sprite = SavingSystem.LoadImageFromFile(displayedRecipe.picture);
         dropdown.value = (int)displayedRecipe.type;
+    }
+
+    public static string RichTextAdder(string text)
+    {
+        string patternRegex = @"#link=([-a-zA-Z0-9]+)#";
+
+        string result = Regex.Replace(text, patternRegex, match =>
+        {
+            string recipeID = match.Groups[1].Value;
+            Debug.Log(recipeID);
+            Recipe matchingRecipe = ListData.instance.recipes.Find(x => x.ID == recipeID);
+            if (matchingRecipe != null)
+            {
+                return $"<link={recipeID}><color=green><u>{matchingRecipe.name}</u></color></link>";
+            }
+            else
+            {
+                return "<color=red>Broken Link</color>";
+            }
+        });
+        return result;
     }
 
     private string BuildHyperlink(string link)
