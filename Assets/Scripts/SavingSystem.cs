@@ -6,7 +6,7 @@ using UnityEngine;
 
 public static class SavingSystem
 {
-  public static string DataPath => Path.Combine(Application.persistentDataPath, "Data");
+  public static string DataPath => Path.Combine(Application.persistentDataPath);
   public static void Save(object data, string saveFile)
   {
     SaveFile(GetPathFromSaveFile(saveFile), data);

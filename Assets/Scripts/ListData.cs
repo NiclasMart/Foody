@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class ListData : MonoBehaviour
 {
   public List<Recipe> recipes = new List<Recipe>();
-  public List<Recipe> foods = new List<Recipe>();
+  public List<string> foods = new List<string>();
   public Dictionary<string, int> purchases = new Dictionary<string, int>();
   public static ListData instance = null;
 
@@ -44,6 +45,17 @@ public class ListData : MonoBehaviour
   public void LoadRecipeList()
   {
     recipes = (List<Recipe>)SavingSystem.Load("RecipeList");
+
+    //Todo: can be deleted after all recipes have an ID
+    foreach(var recipe in recipes)
+    {
+        if (recipe.ID == null)
+        {
+            recipe.ID = Guid.NewGuid().ToString();
+            Debug.Log("Generated new gui");
+        }
+    }
+
     if (recipes == null) recipes = new List<Recipe>();
   }
 
@@ -54,8 +66,8 @@ public class ListData : MonoBehaviour
 
   public void LoadFoodList()
   {
-    foods = (List<Recipe>)SavingSystem.Load("FoodList");
-    if (foods == null) foods = new List<Recipe>();
+    foods = (List<string>)SavingSystem.Load("FoodList");
+    if (foods == null) foods = new List<string>();
   }
 
   public void SaveShoppingList()

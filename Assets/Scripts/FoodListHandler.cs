@@ -15,14 +15,21 @@ public class FoodListHandler : ListHandler
 
   public override void ShowCompleteList()
   {
-    ShowList(ListData.instance.foods);
+    List<Recipe> displayFoodList = new List<Recipe>();
+    foreach (var foodIdentifier in ListData.instance.foods)
+    {
+      Recipe matchingRecipe = ListData.instance.recipes.Find(recipe => recipe.ID == foodIdentifier);
+      if (matchingRecipe != null) displayFoodList.Add(matchingRecipe);
+      else displayFoodList.Add(new Recipe(foodIdentifier, false));
+    }
+    ShowList(displayFoodList);
   }
 
   public void AddNewFood(string msg)
   {
     if (Input.GetKeyDown(KeyCode.Escape)) return;
 
-    ListData.instance.foods.Add(new Recipe(foodIn.GetValue()));
+    ListData.instance.foods.Add(foodIn.GetValue());
     ListData.instance.SaveFoodList();
 
     foodIn.ClearField();
@@ -31,7 +38,9 @@ public class FoodListHandler : ListHandler
 
   public void DeleteFoodFromList(Recipe food)
   {
-    ListData.instance.foods.Remove(food);
+    if (food.ID == null) ListData.instance.foods.Remove(food.name);
+    else ListData.instance.foods.Remove(food.ID);
+
     ListData.instance.SaveFoodList();
     ShowCompleteList();
   }

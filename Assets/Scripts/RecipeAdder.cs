@@ -29,7 +29,7 @@ public class RecipeAdder : MonoBehaviour
       return;
     }
 
-    Recipe newRecipe = new Recipe(nameIn.GetValue());
+    Recipe newRecipe = new Recipe(nameIn.GetValue(), true);
     newRecipe.link = linkIn.GetValue();
     newRecipe.tags = StringToList(tagsIn.GetValue());
     newRecipe.ingredients = ingredienceIn.GetValue();
