@@ -9,12 +9,14 @@ public class RecipeListHandler : ListHandler
     [SerializeField] List<GameObject> sortIcons;
     [SerializeField] GameObject exportBtn;
     Searchbar searchbar;
+    RecipeDisplay recipeDisplay;
     [HideInInspector] public List<Recipe> displayedList;
     int sortState = 0;
 
     private void Awake()
     {
         searchbar = FindObjectOfType<Searchbar>();
+        recipeDisplay = FindObjectOfType<RecipeDisplay>();
     }
 
     public override void Start()
@@ -45,6 +47,23 @@ public class RecipeListHandler : ListHandler
         {
             slot.GetComponentInChildren<RecipeSlot>().ToggleExportOption(exportModeActive);
         }
+    }
+
+    public void DisplayRecipe(Recipe recipe)
+    {
+        recipeDisplay.ToggleRecipeDisplay(true);
+        recipeDisplay.Display(recipe);
+    }
+
+    //returns the next recipe in the list, depending on the direction (-1 or 1)
+    public Recipe GetNextRecipeInList(int direction)
+    {
+        if (recipeDisplay.Linkpath.Count > 0) return null;
+        int index = displayedList.FindIndex(x => x == recipeDisplay.displayedRecipe);
+        if (index == -1) return null;
+        index += direction;
+        if (index < 0 || index >= displayedList.Count) return null;
+        return displayedList[index];
     }
 
     public void ExportRecieps()

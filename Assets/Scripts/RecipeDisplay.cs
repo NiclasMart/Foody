@@ -12,13 +12,13 @@ public class RecipeDisplay : MonoBehaviour
     [SerializeField] RectTransform showCard, editCard;
     [SerializeField] ShoppingAdder shoppingAdder;
     [SerializeField] TextMeshProUGUI nameField, linkField, dateField, date2Field, tagHeader, tagsField, ingredienceField, descriptionHeader, descriptionField, noteHeader, noteField;
-    [SerializeField] Image pictureField, pictureIn, foodListButton, markerButton;
+    [SerializeField] Image pictureField, pictureIn, foodListButton, markerButton, linkInitiator;
     [SerializeField] TagSearchbar tagSearchbar;
     [SerializeField] TMP_Dropdown dropdown;
     [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn, noteIn;
     ListHandler listHandler;
     public Recipe displayedRecipe;
-    List<string> linkpath = new List<string>();
+    public List<string> Linkpath { get; private set; } = new List<string>();
 
     private void Awake()
     {
@@ -53,6 +53,8 @@ public class RecipeDisplay : MonoBehaviour
 
         SetButtonColor(foodListButton, ListData.instance.foods.Find(x => x == recipe.ID) != null);
         SetButtonColor(markerButton, recipe.marked);
+
+        if (linkInitiator) linkInitiator.gameObject.SetActive(Linkpath.Count > 0);
         displayedRecipe = recipe;
     }
 
@@ -61,7 +63,7 @@ public class RecipeDisplay : MonoBehaviour
         Recipe linkedRecipe = ListData.instance.recipes.Find(x => x.ID == recipeID);
         if (linkedRecipe != null)
         {
-            linkpath.Add(displayedRecipe.ID);
+            Linkpath.Add(displayedRecipe.ID);
             Display(linkedRecipe);
         }
     }
@@ -72,6 +74,7 @@ public class RecipeDisplay : MonoBehaviour
         ListData.instance.DeleteRecipe(displayedRecipe);
         ListData.instance.SaveRecipeList();
         listHandler.ShowCompleteList();
+        Linkpath.Clear();
         ToggleRecipeDisplay(false);
     }
 
@@ -162,17 +165,16 @@ public class RecipeDisplay : MonoBehaviour
     //jumps to the last displayed recipe from linkpath or back to overview
     public void JumpBackInLinkpath()
     {
-        if (linkpath.Count != 0)
+        if (Linkpath.Count != 0)
         {
-            string lastID = linkpath[linkpath.Count - 1];
-            linkpath.RemoveAt(linkpath.Count - 1);
+            string lastID = Linkpath[Linkpath.Count - 1];
+            Linkpath.RemoveAt(Linkpath.Count - 1);
             Recipe linkedRecipe = ListData.instance.recipes.Find(x => x.ID == lastID);
             Display(linkedRecipe);
         }
         else
         {
             ToggleRecipeDisplay(false);
-            listHandler.ShowCompleteList();
         }
     }
 
