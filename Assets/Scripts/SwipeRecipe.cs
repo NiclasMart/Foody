@@ -67,7 +67,7 @@ public class SwipeRecipe : MonoBehaviour
 
                 if (nextRecipe != null)
                 {
-                    listHandler.DisplayRecipe(nextRecipe);
+                    gameObject.GetComponent<RecipeDisplay>().Display(nextRecipe);
                 }
             }
         }

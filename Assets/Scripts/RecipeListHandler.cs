@@ -49,12 +49,6 @@ public class RecipeListHandler : ListHandler
         }
     }
 
-    public void DisplayRecipe(Recipe recipe)
-    {
-        recipeDisplay.ToggleRecipeDisplay(true);
-        recipeDisplay.Display(recipe);
-    }
-
     //returns the next recipe in the list, depending on the direction (-1 or 1)
     public Recipe GetNextRecipeInList(int direction)
     {

@@ -17,7 +17,7 @@ public class RecipeDisplay : MonoBehaviour
     [SerializeField] TMP_Dropdown dropdown;
     [SerializeField] InputFunctionality nameIn, linkIn, tagsIn, ingredienceIn, descriptionIn, noteIn;
     ListHandler listHandler;
-    public Recipe displayedRecipe;
+    public Recipe displayedRecipe { get; private set; } = null;
     public List<string> Linkpath { get; private set; } = new List<string>();
 
     private void Awake()
