@@ -56,6 +56,11 @@ public class RecipeDisplay : MonoBehaviour
 
         if (linkInitiator) linkInitiator.gameObject.SetActive(Linkpath.Count > 0);
         displayedRecipe = recipe;
+
+        //ensures rescaling of all content
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
+
     }
 
     public void OpenLinkedRecipe(string recipeID)

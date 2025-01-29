@@ -94,7 +94,7 @@ public class RecipeListHandler : ListHandler
             case 0: //name
                 Debug.Log("Sort name");
                 if (sortState >> 2 == 1) list.Sort((a, b) => b.name.CompareTo(a.name));
-                else list.Sort();
+                else list.Sort((a, b) => a.name.CompareTo(b.name));
                 break;
             case 1: //cook date
                 Debug.Log("Sort cook date");
