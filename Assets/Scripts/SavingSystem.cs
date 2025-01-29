@@ -63,7 +63,7 @@ public static class SavingSystem
       if (recipe.picture != "")
       {
         string imagePath = Path.Combine(path, recipe.picture);
-        string newImageName = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + nameCounter.ToString() + ".png";
+        string newImageName = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + nameCounter.ToString() + ".jpg";
         string newImagePath = Path.Combine(DataPath, newImageName);
         File.Copy(imagePath, newImagePath);
         recipe.picture = newImageName;

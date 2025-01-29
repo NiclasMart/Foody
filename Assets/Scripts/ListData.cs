@@ -46,17 +46,6 @@ public class ListData : MonoBehaviour
     public void LoadRecipeList()
     {
         recipes = (List<Recipe>)SavingSystem.Load("RecipeList");
-
-        //Todo: can be deleted after all recipes have an ID
-        foreach (var recipe in recipes)
-        {
-            if (recipe.ID == null)
-            {
-                recipe.ID = Guid.NewGuid().ToString();
-                Debug.Log("Generated new gui");
-            }
-        }
-
         if (recipes == null) recipes = new List<Recipe>();
     }
 
