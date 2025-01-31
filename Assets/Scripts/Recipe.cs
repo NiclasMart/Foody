@@ -13,6 +13,7 @@ public enum RecipeType
 [System.Serializable]
 public class Recipe : IComparable<Recipe>
 {
+  public string ID;
   public string name;
   public string picture;
   public RecipeType type;
@@ -25,8 +26,9 @@ public class Recipe : IComparable<Recipe>
   public string note;
   public bool marked;
 
-  public Recipe(string name)
+  public Recipe(string name, bool createID)
   {
+    if (createID) ID = Guid.NewGuid().ToString();
     this.name = name;
     picture = "";
     link = "";
@@ -39,7 +41,7 @@ public class Recipe : IComparable<Recipe>
 
   public int CompareTo(Recipe other)
   {
-    return this.name.CompareTo(other.name);
+    return ID.CompareTo(other.ID);
   }
 
   public DateTime GetCookDate()

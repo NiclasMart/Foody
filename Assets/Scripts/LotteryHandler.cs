@@ -63,6 +63,7 @@ public class LotteryHandler : ListHandler
 
     private bool RecipeCanBeShown(Recipe recipe)
     {
+        if (ListData.instance.recipes.Count < holdBackCount * 3) return true;
         if (recentlyShownRecipes.Contains(recipe))
         {
             Debug.Log("Hold Back: " + recipe.name);

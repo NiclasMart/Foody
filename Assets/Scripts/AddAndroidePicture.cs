@@ -55,10 +55,11 @@ public class AddAndroidePicture : PictureAdder
     photo.SetPixels(camTexture.GetPixels());
     photo.Apply();
 
-    //Encode to a PNG
-    byte[] bytes = photo.EncodeToPNG();
-    //Write out the PNG. Of course you have to substitute your_path for something sensible
-    string photoName = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".png";
+    // Encode to a JPG
+    byte[] bytes = photo.EncodeToJPG(75); // 75 is the quality level, you can adjust it
+
+    // Write out the JPG. Of course you have to substitute your_path for something sensible
+    string photoName = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".jpg";
     string path = Path.Combine(SavingSystem.DataPath, photoName);
     File.WriteAllBytes(path, bytes);
 
