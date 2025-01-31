@@ -15,8 +15,8 @@ public class RecipeListHandler : ListHandler
 
     private void Awake()
     {
-        searchbar = FindObjectOfType<Searchbar>();
-        recipeDisplay = FindObjectOfType<RecipeDisplay>();
+        searchbar = FindFirstObjectByType<Searchbar>();
+        recipeDisplay = FindFirstObjectByType<RecipeDisplay>();
     }
 
     public override void Start()
