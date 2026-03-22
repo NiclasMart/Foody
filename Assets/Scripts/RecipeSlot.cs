@@ -45,7 +45,7 @@ public class RecipeSlot : MonoBehaviour
 
   public void ShowRecipe()
   {
-    RecipeDisplay display = FindObjectOfType<RecipeDisplay>();
+    RecipeDisplay display = FindFirstObjectByType<RecipeDisplay>();
     if (display == null) return;
 
     display.ToggleRecipeDisplay(true);
@@ -54,7 +54,7 @@ public class RecipeSlot : MonoBehaviour
 
   public void DeleteSlot()
   {
-    FindObjectOfType<FoodListHandler>()?.DeleteFoodFromList(recipe);
+    FindFirstObjectByType<FoodListHandler>()?.DeleteFoodFromList(recipe);
   }
 
   public Recipe GetRecipe()
