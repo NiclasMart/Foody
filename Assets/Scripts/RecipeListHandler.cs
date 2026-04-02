@@ -23,6 +23,7 @@ public class RecipeListHandler : ListHandler
     {
         ShowList(searchbar.GetSearchResult());
     }
+    
     public override void ShowList(List<Recipe> list)
     {
         exportModeActive = true;

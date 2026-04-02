@@ -19,7 +19,8 @@ public class Searchbar : MonoBehaviour
     public List<Recipe> GetSearchResult()
     {
         //handle recipe type
-        if (input.text == null || input.text == "") return FilterRecipeType();
+        if (string.IsNullOrEmpty(input.text)) 
+            return FilterRecipeType();
 
 
         //handle search input

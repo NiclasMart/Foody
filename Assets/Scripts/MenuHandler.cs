@@ -32,10 +32,4 @@ public class MenuHandler : MonoBehaviour
     {
         animator.SetBool("addCardActive", on);
     }
-
-    public void ShowExplorer()
-    {
-        string itemPath = Application.persistentDataPath.Replace(@"/", @"\");
-        System.Diagnostics.Process.Start("explorer.exe", "/root," + itemPath);
-    }
 }
