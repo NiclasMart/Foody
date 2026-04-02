@@ -49,8 +49,11 @@ public class Searchbar : MonoBehaviour
 
     public void Fill(string term)
     {
-        input.text = term;
-        GetSearchResult();
+        input.text = term + " ";
+        input.ActivateInputField();
+        input.caretPosition = input.text.Length;
+        input.selectionAnchorPosition = input.caretPosition;
+        input.selectionFocusPosition = input.caretPosition;
     }
 
     public List<Recipe> FilterRecipeType()
