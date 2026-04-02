@@ -185,7 +185,8 @@ public class RecipeDisplay : MonoBehaviour
 
     public void CopyIDToClipboard()
     {
-        if (displayedRecipe.ID != null) GUIUtility.systemCopyBuffer = displayedRecipe.ID;
+        if (displayedRecipe.ID != null) 
+            GUIUtility.systemCopyBuffer = $"#link={displayedRecipe.ID}#";
     }
 
     private void SetButtonColor(Image btn, bool active)
